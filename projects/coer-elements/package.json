@@ -1,0 +1,24 @@
+{
+  "name": "coer-elements",
+  "version": "0.0.11",
+  "author": "Christian Omar Escamilla Rodríguez",
+  "keywords": ["coer", "tools", "components"],
+  "description": "",
+  "license": "MIT",
+  "homepage": "https://github.com/Chris19910804/coer-elements",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chris19910804/coer-elements"
+  },
+  "scripts": {
+    "push": "npm publish --access public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

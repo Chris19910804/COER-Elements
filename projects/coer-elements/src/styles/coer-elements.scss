@@ -1,0 +1,29 @@
+* {
+    font-family: sans-serif;
+    letter-spacing: normal;
+}
+
+h1, h2, h3, h4, h5, h6, p, pre, hr, figure, fieldset {
+    margin: 0px;
+    padding: 0px;
+}
+
+input[type="file"] {
+    display: none !important;
+}
+
+.readonly {
+    color: black !important;
+    background-color: #bbbbbb83 !important;
+}
+
+.no-selection::selection {
+    background-color: transparent !important;
+}
+
+@import "./colors.scss";
+@import "./containers.scss";
+@import "./cursores.scss";
+@import "./scroll-bar.scss";
+@import "./layout.scss";
+@import "./bootstrap.scss";

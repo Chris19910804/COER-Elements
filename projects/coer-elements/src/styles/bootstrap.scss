@@ -1,0 +1,15 @@
+.tooltip-inner {
+    min-width: 125px;
+    max-width: 250px;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+}
+
+.invisible {
+    visibility: hidden !important;
+    width: 0px !important;
+    height: 0px !important;
+}

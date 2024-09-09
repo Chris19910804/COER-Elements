@@ -1,0 +1,21 @@
+.flex-center {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.flex-center-left {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+.flex-center-right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+}
+
+.fill-space {
+    flex: 1 1 auto;
+}
