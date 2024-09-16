@@ -1,0 +1,57 @@
+<div class="coer-textarea">
+    <mat-form-field
+        [id]="_id + '-container'"
+        [floatLabel]="floatLabel()"
+        [ngClass]="{
+            'readonly': isReadonly() && !isLoading()
+        }"
+        [style]="{
+            'width': width(),
+            'min-width': minWidth(),
+            'max-width': maxWidth(),
+            'margin-top': marginTop(),
+            'margin-right': marginRight(),
+            'margin-bottom': marginBottom(),
+            'margin-left': marginLeft()
+        }">
+        <mat-label>{{ label() }}</mat-label>
+
+        <textarea #coerTextArea matInput
+            [id]="_id"
+            type="text"
+            [placeholder]="placeholder()"
+            [minLength]="minLength()"
+            [maxLength]="maxLength()"
+            [disabled]="!_isEnable()"
+            [value]="_value"
+            (input)="SetValue(coerTextArea.value)"
+            (blur)="SetTouched(true)"
+            [style]="{
+                'cursor': isLoading() ? 'wait' : null,
+                'margin-top': (floatLabel() == 'auto') ? '15px' : '9px',
+                'padding-right': paddingRight(),
+                'text-align': textPosition(),
+                'resize': (!resize() || !_isEnable()) ? 'none' : ''
+            }"></textarea>
+
+        @if(isLoading()) {
+            <div class="placeholder-glow">
+                <span class="placeholder"></span>
+            </div>
+        }
+
+        <span ngClass="icon-container">
+            @if(isInvalid() && !isDisabled() && !isLoading()) {
+                <i class="fa-solid fa-circle-exclamation"></i>
+            }
+
+            @else if(isValid() && !isDisabled() && !isLoading()) {
+                <i class="fa-solid fa-circle-check text-green"></i>
+            }
+        </span>
+    </mat-form-field>
+
+    @if(showFooter()) {
+        <footer> {{ footer }} </footer>
+    }
+</div>

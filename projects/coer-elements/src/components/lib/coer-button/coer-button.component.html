@@ -1,0 +1,112 @@
+<div [ngClass]="{ 'coer-button': true, 'invisible': isInvisible() }">
+    <a [id]="_id + '-container'"
+        [routerLink]="(path().length > 0 && _isEnable()) ? path() : null"
+        [ngClass]="{ 'loading': isLoading(), 'animate__animated animate__zoomIn': true, 'animate__disabled': !animation() }"
+        [ngStyle]="{ 'margin-top': marginTop(), 'margin-right': marginRight(), 'margin-bottom': marginBottom(), 'margin-left': marginLeft()  }">
+        @if(type() =='filled' || type() == 'outline') {
+            <button mat-button
+                [id]="_id + '-inner-button'"
+                type="button"
+                (click)="Click($event)"
+                [ngClass]="{
+                    'primary-filled': (color() == 'primary' && type() =='filled'),
+                    'secondary-filled': (color() == 'secondary' && type() =='filled'),
+                    'success-filled': (color() == 'success' && type() =='filled'),
+                    'warning-filled': (color() == 'warning' && type() =='filled'),
+                    'danger-filled': (color() == 'danger' && type() =='filled'),
+                    'navigation-filled': (color() == 'navigation' && type() =='filled'),
+                    'primary-outline': (color() == 'primary' && type() =='outline'),
+                    'secondary-outline': (color() == 'secondary' && type() =='outline'),
+                    'success-outline': (color() == 'success' && type() =='outline'),
+                    'warning-outline': (color() == 'warning' && type() =='outline'),
+                    'danger-outline': (color() == 'danger' && type() =='outline'),
+                    'navigation-outline': (color() == 'navigation'),
+                    'readonly': isDisabled(),
+                    'cursor-wait': isLoading()
+                }"
+                [ngStyle]="{
+                    'width': width(),
+                    'min-width': minWidth(),
+                    'height': height(),
+                    'min-height': minHeight()
+                }">
+                <span class="slot" *ngIf="!isLoading(); else loading" >
+                    <span *ngIf="(iconPosition() == 'left')">
+                        <i [class]="_icon()"></i>
+                    </span>
+
+                    <span [ngClass]="{ 'ms-2': (iconPosition() == 'left'), 'me-2': (iconPosition() == 'right') }">
+                        <ng-content></ng-content>
+                    </span>
+
+                    <span *ngIf="(iconPosition() == 'right')">
+                        <i [class]="_icon()"></i>
+                    </span>
+                </span>
+
+                <ng-template #loading>
+                    <span class="slot fa-fade">
+                        <span class="me-2"> Loading </span>
+                        <i class="spinner-border"></i>
+                    </span>
+                </ng-template>
+            </button>
+        }
+
+        @else {
+            @if (type() == 'icon') {
+                <button mat-icon-button
+                    [id]="_id + '-inner-button'"
+                    (click)="Click($event)"
+                    [ngClass]="{
+                        'primary-filled': (color() == 'primary'),
+                        'secondary-filled': (color() == 'secondary'),
+                        'success-filled': (color() == 'success'),
+                        'warning-filled': (color() == 'warning'),
+                        'danger-filled': (color() == 'danger'),
+                        'navigation-filled': (color() == 'navigation'),
+                        'readonly': (isDisabled() || isLoading()),
+                        'cursor-wait': isLoading()
+                    }">
+                    <i [class]="_icon()"></i>
+                </button>
+            }
+
+            @else if (type() == 'icon-outline') {
+                <button mat-icon-button
+                    [id]="_id + '-inner-button'"
+                    (click)="Click($event)"
+                    [ngClass]="{
+                        'primary-outline': (color() == 'primary'),
+                        'secondary-outline': (color() == 'secondary'),
+                        'success-outline': (color() == 'success'),
+                        'warning-outline': (color() == 'warning'),
+                        'danger-outline': (color() == 'danger'),
+                        'navigation-outline': (color() == 'navigation'),
+                        'readonly': (isDisabled() || isLoading()),
+                        'cursor-wait': isLoading()
+                    }">
+                    <i [class]="_icon()"></i>
+                </button>
+            }
+
+            @else if (type() == 'icon-no-border') {
+                <button mat-icon-button
+                    [id]="_id + '-inner-button'"
+                    (click)="Click($event)"
+                    [ngClass]="{
+                        'primary-outline': (color() == 'primary'),
+                        'secondary-outline': (color() == 'secondary'),
+                        'success-outline': (color() == 'success'),
+                        'warning-outline': (color() == 'warning'),
+                        'danger-outline': (color() == 'danger'),
+                        'navigation-outline': (color() == 'navigation'),
+                        'readonly': (isDisabled() || isLoading()),
+                        'icon-no-border': true
+                    }">
+                    <i [class]="_icon()"></i>
+                </button>
+            }
+        }
+    </a>
+</div>

@@ -21,9 +21,10 @@ input[type="file"] {
     background-color: transparent !important;
 }
 
+@import "./angular-material.scss";
+@import "./bootstrap.scss";
 @import "./colors.scss";
 @import "./containers.scss";
 @import "./cursores.scss";
 @import "./scroll-bar.scss";
 @import "./layout.scss";
-@import "./bootstrap.scss";

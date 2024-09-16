@@ -1,4 +1,4 @@
-import { Tools } from "../";
+import { Tools } from "./tools";
 import * as XLSX from 'xlsx';
 
 export class Files {

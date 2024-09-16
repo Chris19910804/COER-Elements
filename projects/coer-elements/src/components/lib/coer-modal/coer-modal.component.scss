@@ -1,0 +1,56 @@
+.modal-dialog {
+    margin: auto !important;
+    height: 100vh;
+}
+
+.modal-header {
+    padding: 8px 16px !important;
+}
+
+.modal-title {
+    font-weight: bold !important;
+    font-size: 17px !important;
+}
+
+.modal-body {
+    padding-top: 16px !important;
+    padding-bottom: 0px !important;
+    min-width: 60px !important;
+}
+
+div.coer-filebox .modal-body {
+    padding: 0px !important;
+}
+
+.modal-footer {
+    border: none !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    max-height: 64px !important;
+    min-height: 64px !important;
+    gap: 10px !important;
+}
+
+.btn-close:focus {
+    box-shadow: none !important;
+}
+
+div.modal-backdrop {
+    z-index: 0 !important;
+}
+
+aside.modal div.backdrop {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #0000005b;
+    z-index: 1500;
+}
+
+div.modal-content {
+    z-index: 1501;
+    overflow: visible !important;
+}

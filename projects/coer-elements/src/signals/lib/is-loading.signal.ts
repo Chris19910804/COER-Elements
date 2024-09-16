@@ -1,2 +1,2 @@
 import { signal } from "@angular/core";
-export const isLoadingSIG = signal<boolean>(false);
+export const isLoadingSIGNAL = signal<boolean>(false);

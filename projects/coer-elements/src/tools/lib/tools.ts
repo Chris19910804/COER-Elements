@@ -34,15 +34,27 @@ export const Tools = {
     IsOnlyWhiteSpace: <T>(value: T | null | undefined): boolean => {
         if (value === undefined) return true;
         if (value === null) return true;
-        if((value as string).toString().trim() === '') return true;
+        if (typeof value === 'string' && value.trim() === '') return true;
         return false;
+    },
+
+
+    /** Returns true if has string value and is not only whitespace, false otherwise */
+    IsNotOnlyWhiteSpace: <T>(value: T | null | undefined): boolean => {
+        if (value === undefined) return false;
+        if (value === null) return false;
+        if (typeof value === 'string' && value.trim() === '') return false;
+        return true;
     },
 
 
     /** Break reference of a object or array */
     BreakReference: <T>(object: T): T => {
-        if (object === undefined) return undefined as T;
-        if (object === null) return null as T;
+        if (object === null) return object;
+        if (typeof object === 'undefined') return object;
+        if (typeof object === 'string') return object;
+        if (typeof object === 'number') return object;
+        if (typeof object === 'boolean') return object;
         const OBJECT = JSON.parse(JSON.stringify(object))
         return (Array.isArray(OBJECT)) ? [...OBJECT] : { ...OBJECT }
     },
@@ -60,7 +72,11 @@ export const Tools = {
     /** Get properties of an object */
     GetObjectProperties: <T>(obj: T | null | undefined): string[] => {
         const properties: string[] = [];
-        if(Tools.IsNull(obj)) return properties;
+        if (obj === null) return properties;
+        if (typeof obj === 'undefined') return properties;
+        if (typeof obj === 'string') return properties;
+        if (typeof obj === 'number') return properties;
+        if (typeof obj === 'boolean') return properties;
         for(const property in obj) properties.push(String(property));
         return properties;
     },
@@ -81,7 +97,7 @@ export const Tools = {
 
     /** Set First Char To Lower */
     FirstCharToLower: (text: string | null | undefined): string => {
-        if (Tools.IsNull(text)) return '';
+        if (Tools.IsOnlyWhiteSpace(text)) return '';
 
         const textArray: string[] = [];
         for(let i = 0; i < text!.length; i++) {
@@ -95,7 +111,7 @@ export const Tools = {
 
     /** Set First Char To Upper */
     FirstCharToUpper: (text: string | null | undefined): string => {
-        if (Tools.IsNull(text)) return '';
+        if (Tools.IsOnlyWhiteSpace(text)) return '';
 
         const textArray: string[] = [];
         for(let i = 0; i < text!.length; i++) {
@@ -145,16 +161,13 @@ export const Tools = {
 
     /** Return a string with forman numeric */
     GetNumericFormat: (value: string | number | null | undefined, decimals: number = 0): string => {
-        if (value == undefined
-            || value == null
-            || value.toString().trim() == ''
-            || isNaN(Number(value))) {
+        if (Tools.IsOnlyWhiteSpace(value) || isNaN(Number(value))) {
             return '0';
         }
 
         let valueInteger = '';
         let valueDecimal = '';
-        value = value.toString().replaceAll(' ', '');
+        value = value!.toString().replaceAll(' ', '');
 
         if (value.includes('.') || (decimals > 0)) {
             valueInteger = value.includes('.') ? value.split('.')[0] : value;

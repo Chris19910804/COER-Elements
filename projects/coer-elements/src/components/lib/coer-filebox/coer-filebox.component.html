@@ -1,0 +1,54 @@
+<div class="coer-filebox">
+    @if(type() == 'image') {
+        <figure (click)="_isEnable() ? inputFileImage.click() : null"
+            [ngClass]="{ 'dashed': IsNull(_image?.value) }"
+            [ngStyle]="{
+                'margin-top': _image?.marginTop || '',
+                'margin-right': _image?.marginRight || '',
+                'margin-bottom': _image?.marginBottom || '',
+                'margin-left': _image?.marginLeft || ''
+            }">
+
+            @if(isLoading()) {
+                <div class="loading">
+                    <i class="spinner-border"></i>
+                </div>
+
+                <div class="placeholder-glow">
+                    <span class="placeholder"></span>
+                </div>
+            }
+
+            <img [src]="base64 | noImage"
+                [ngStyle]="{
+                    'width': _image?.width || '',
+                    'max-width': _image?.maxWidth || '',
+                    'height': _image?.height || '',
+                    'max-height': _image?.maxHeight || '210px'
+                }">
+
+            <input #inputFileImage
+                type="file"
+                accept="image/png, image/jpeg, image/gif, image/svg+xml"
+                (change)="UploadImages($event)"
+                [multiple]="multiple()">
+
+            @if(_isEnable() && IsNotNull(_image) && IsNotNull(_image!.value)) {
+                <div class="icon-container">
+                    @if(IsNull(_image?.allowDelete) || _image!.allowDelete) {
+                        <i class="fa-solid fa-trash-can" (click)="DeleteImage($event)"></i>
+                    }
+
+                    @if(IsNull(_image?.allowExpand) || _image!.allowExpand) {
+                        <i class="fa-solid fa-expand" (click)="ExpandImage($event)"></i>
+                    }
+                </div>
+            }
+        </figure>
+    }
+
+    <!-- Modal -->
+    <coer-modal #modal [title]="_image?.name || ''" height="90vh" width="full">
+        <div class="modal-image" [ngStyle]="{ 'background-image': 'url(' + base64 + ')' }"></div>
+    </coer-modal>
+</div>

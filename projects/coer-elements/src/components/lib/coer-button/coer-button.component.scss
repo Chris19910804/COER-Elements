@@ -1,0 +1,209 @@
+@import "../../../styles/colors.scss";
+
+coer-button {
+    display: contents !important;
+}
+
+div.coer-button {
+
+    a {
+        display: inline-block !important;
+    }
+
+    a.animate__disabled {
+        animation-duration: 0s !important;
+    }
+
+    display: contents !important;
+
+    button {
+        font-size: 17px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .slot {
+        width: 100px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+    }
+
+    //filled
+    button.primary-filled {
+        background-color: $blue !important;
+        color: $white !important;
+    }
+
+    button.secondary-filled {
+        background-color: $gray !important;
+        color: $white !important;
+    }
+
+    button.success-filled {
+        background-color: $green !important;
+        color: $white !important;
+    }
+
+    button.warning-filled {
+        background-color: $yellow !important;
+        color: $black !important;
+    }
+
+    button.danger-filled {
+        background-color: $red !important;
+        color: $white !important;
+    }
+
+    button.navigation-filled {
+        background-color: $orange !important;
+        color: $white !important;
+    }
+
+    //outline
+    button.primary-outline {
+        background-color: white !important;
+        border: 1px solid $blue !important;
+        color: $blue !important;
+    }
+
+    button.secondary-outline {
+        background-color: white !important;
+        border: 1px solid $gray !important;
+        color: $gray !important;
+    }
+
+    button.success-outline {
+        background-color: white !important;
+        border: 1px solid $green !important;
+        color: $green !important;
+    }
+
+    button.warning-outline {
+        background-color: white !important;
+        border: 1px solid $yellow !important;
+        color: $yellow !important;
+    }
+
+    button.danger-outline {
+        background-color: white !important;
+        border: 1px solid $red !important;
+        color: $red !important;
+    }
+
+    button.navigation-outline {
+        background-color: white !important;
+        border: 1px solid $orange !important;
+        color: $orange !important;
+    }
+
+    //hover & focus
+    button.primary-filled:not(.readonly):hover, button.primary-filled:not(.readonly):focus,
+    button.primary-outline:not(.readonly):hover, button.primary-outline:not(.readonly):focus,
+    button.secondary-filled:not(.readonly):hover, button.secondary-filled:not(.readonly):focus,
+    button.secondary-outline:not(.readonly):hover, button.secondary-outline:not(.readonly):focus,
+    button.success-filled:not(.readonly):hover, button.success-filled:not(.readonly):focus,
+    button.success-outline:not(.readonly):hover, button.success-outline:not(.readonly):focus,
+    button.warning-filled:not(.readonly):hover, button.warning-filled:not(.readonly):focus,
+    button.warning-outline:not(.readonly):hover, button.warning-outline:not(.readonly):focus,
+    button.danger-filled:not(.readonly):hover, button.danger-filled:not(.readonly):focus,
+    button.danger-outline:not(.readonly):hover, button.danger-outline:not(.readonly):focus {
+        filter: brightness(1.1) !important;
+    }
+
+    //focus
+    button.primary-filled:not(.readonly):focus,
+    button.primary-outline:not(.readonly):focus {
+        box-shadow: 0px 0px 20px $blue !important;
+    }
+
+    button.secondary-filled:not(.readonly):focus,
+    button.secondary-outline:not(.readonly):focus {
+        box-shadow: 0px 0px 20px $gray !important;
+    }
+
+    button.success-filled:not(.readonly):focus,
+    button.success-outline:not(.readonly):focus {
+        box-shadow: 0px 0px 20px $green !important;
+    }
+
+    button.warning-filled:not(.readonly):focus,
+    button.warning-outline:not(.readonly):focus {
+        box-shadow: 0px 0px 20px $yellow !important;
+    }
+
+    button.danger-filled:not(.readonly):focus,
+    button.danger-outline:not(.readonly):focus {
+        box-shadow: 0px 0px 20px $red !important;
+    }
+
+    button.navigation-filled:not(.readonly):focus,
+    button.navigation-outline:not(.readonly):focus {
+        box-shadow: 0px 0px 20px $orange !important;
+    }
+
+    button.mdc-icon-button.mat-mdc-icon-button {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 0px !important;
+    }
+
+    button.mdc-icon-button.mat-mdc-icon-button.icon-no-border {
+        width: 25px !important;
+        height: 25px !important;
+        background-color: transparent !important;
+        border: none !important;
+        overflow: visible !important;
+
+        * {
+            font-size: medium !important;
+        }
+
+        i.bi-box-arrow-left,
+        i.bi-box-arrow-in-right {
+            font-size: 20px !important;
+        }
+    }
+
+    //readonly
+    button.readonly,
+    button.readonly:hover,
+    button.readonly:focus {
+        background-color: rgb(223, 222, 222) !important;
+        border-color: rgb(223, 222, 222) !important;
+        color: white !important;
+    }
+
+    //invisible
+    coer-button[ishidden="true"],
+    coer-button[ng-reflect-invisible="true"] {
+        position: relative !important;
+        top: calc(100vh * 100);
+        left: calc(100vw * 100);
+    }
+
+    a.loading {
+        cursor: wait !important;
+    }
+
+    i {
+        vertical-align: middle !important;
+    }
+
+    i.spinner-border {
+        width: 15px !important;
+        height: 15px !important;
+        font-size: 16px !important;
+    }
+
+    span {
+        font-weight: bold !important;
+    }
+}
+
+div#coer-tool-bar coer-button * {
+    color: $orange !important;
+}

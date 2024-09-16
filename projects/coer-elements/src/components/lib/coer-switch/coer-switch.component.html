@@ -1,0 +1,11 @@
+<div [ngClass]="{ 'coer-switch': true, 'placeholder-glow': isLoading(), 'invisible': isInvisible() }">
+    <div [id]="_id" [ngClass]="{ 'placeholder': isLoading() }">
+        <mat-slide-toggle
+            #coerSwitch
+            [checked]="_value"
+            [disabled]="!_isEnable()"
+            [labelPosition]="labelPosition()"
+            (change)="Change($event.checked)"
+        >{{ label() }}</mat-slide-toggle>
+    </div>
+</div>

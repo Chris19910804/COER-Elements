@@ -1,0 +1,42 @@
+<aside title='' [id]="_id" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" [ngStyle]="{ 'max-width': _width }">
+        <div class="modal-content">
+            @if(IsNull(header()) || (IsNotNull(header()) && header()?.show())) {
+                <header class="modal-header">
+                    <h6 class="modal-title">
+                        <i [class]="_icon()"></i>
+                        <span [ngClass]="{ 'ms-1': _icon().length > 0 }"> {{ _title() }} </span>
+                    </h6>
+
+                    @if(showCloseButton()) {
+                        <button type="button" class="btn-close" (click)="Close()"></button>
+                    }
+                </header>
+            }
+
+            <section class="modal-body" [ngStyle]="{
+                    'height': height(),
+                    'max-height': maxHeight(),
+                    'overflow': maxHeight() === '' ? 'visible' : 'auto'
+                }">
+                @if(IsNotNull(body()) && body()?.show()) {
+                    <ng-container [ngTemplateOutlet]="body()!.template"></ng-container>
+                }
+
+                @else {
+                    <ng-content></ng-content>
+                }
+            </section>
+
+            @if(IsNotNull(footer())) {
+                <footer class="modal-footer">
+                    @if(footer()?.show()) {
+                        <ng-container [ngTemplateOutlet]="footer()!.template"></ng-container>
+                    }
+                </footer>
+            }
+        </div>
+    </div>
+
+    <div [ngClass]="{ 'backdrop': _isModalOpen() }"></div>
+</aside>

@@ -1,6 +1,6 @@
 
 import { Observable } from "rxjs";
-import { IScreenSize } from "../../interfaces";
+import { IScreenSize } from "../../interfaces/lib/screen-size.interface";
 
 export class Screen {
 
@@ -47,5 +47,15 @@ export class Screen {
                 breakpoin: this.BREAKPOINT
             });
         }
+    });
+
+
+    /** */
+    public static BackButtonBrowser = new Observable<string>(subscriber => {
+        window.addEventListener('popstate', popStateEvent => {
+            if (popStateEvent.state && popStateEvent.target) {
+                subscriber.next((popStateEvent.target as any).location.href);
+            }
+        });
     });
 }

@@ -1,0 +1,86 @@
+<header class="coer-page-title" title=''>
+    <h2>
+        <span> {{ title }} </span>
+
+        <!-- Button Information -->
+        <button
+            *ngIf="showInformation">
+            <i class="bi bi-info-circle"></i>
+        </button>
+    </h2>
+
+    <!-- Navigation -->
+    <nav *ngIf="showNavigation" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a><i [class]="_icon"></i></a>
+            </li>
+
+            <li *ngFor="let nav of breadcrumbs" class="breadcrumb-item">
+                <a  [routerLink]='(nav.path && nav.path.length > 0) ? nav.path : null'
+                    [queryParams]='nav.queryParams'
+                    (click)="(nav.click) ? nav.click() : null">
+                    {{ nav.page }}
+                </a>
+            </li>
+        </ol>
+
+        <!-- Go Back -->
+        <a  *ngIf="goBack.show"
+            [routerLink]="goBack.path"
+            [queryParams]='goBack.queryParams'
+            (click)="(goBack.click) ? goBack.click() : null">
+            Go back
+        </a>
+    </nav>
+
+    <!-- Tooltip
+    <dx-tooltip coer-tooltip target="#btn-information" text='Information'></dx-tooltip> -->
+</header>
+
+
+<!-- Information
+<dx-popup
+    [(visible)]="showModal"
+    minWidth="500px" minHeight="430px"
+    [width]="width" [height]="height"
+    [hideOnOutsideClick]="true"
+    [resizeEnabled]="false"
+    [dragEnabled]="true"
+    (onHidden)="(showModal = false)"
+    >
+
+    -- Header --
+    <header *dxTemplate="let data of 'title'">
+        <div class="modal-header">
+            <h5> <i [class]="informationIcon" [style]="{ 'color': informationIconColor }"></i> {{ informationTitle }} </h5>
+            <button (click)="(showModal = false)" class="btn btn-close"></button>
+        </div>
+    </header>
+
+    -- Body --
+    <section *dxTemplate="let data of 'content'">
+        <dx-scroll-view width="100%" height="100%">
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item">Respects the order of the columns like the template.</li>
+
+                <li class="list-group-item">
+                    For more information<a [href]="urlTemplate">click here </a>to download the template
+                </li>
+            </ol>
+        </dx-scroll-view>
+    </section>
+
+    -- Button --
+    <dxi-toolbar-item toolbar="bottom" location="after">
+        <div *dxTemplate="let data of 'menu-item'" class="h-100">
+            <dx-button
+                coer-button
+                icon="fa-solid fa-xmark" text="CLOSE"
+                width="125px" height="40px"
+                (onClick)="(showModal = false)"
+                color="red"
+            ></dx-button>
+        </div>
+    </dxi-toolbar-item>
+</dx-popup> -->

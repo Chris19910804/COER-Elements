@@ -1,5 +1,5 @@
-import { IAppSource } from "../../interfaces";
-import { Tools } from './generi-tools';
+import { IAppSource } from "../../interfaces/lib/app-source.interface";
+import { Tools } from './tools';
 
 export class Breadcrumbs {
 

@@ -1,0 +1,11 @@
+<div [ngClass]="{ 'coer-checkbox': true, 'placeholder-glow': isLoading(), 'invisible': isInvisible() }">
+    <div [id]="_id" [ngClass]="{ 'placeholder': isLoading() }">
+        <mat-checkbox
+            [ngModel]="_value"
+            [indeterminate]="false"
+            [labelPosition]="labelPosition()"
+            [disabled]="!_isEnable()"
+            (change)="this.SetValue($event.checked)"
+        > {{ label() }} </mat-checkbox>
+    </div>
+</div>
