@@ -1,6 +1,6 @@
 import { Component, computed } from '@angular/core';
 import { CoerGridExtension } from './coer-grid.extension';
-import { IGridLength, IGridInputCheckbox } from '../../../interfaces/coer-grid';
+import { IGridLength, IGridInputCheckbox } from '../../../interfaces';
 import { CoerCheckbox } from '../../lib/coer-checkbox/coer-checkbox.component';
 import { CoerTextBox } from '../../lib/coer-textbox/coer-textbox.component';
 import { CoerNumberBox } from '../../lib/coer-numberbox/coer-numberbox.component';

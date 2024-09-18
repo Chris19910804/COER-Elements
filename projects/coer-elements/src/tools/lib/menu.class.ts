@@ -1,4 +1,4 @@
-import { IMenuOptionSelected } from "../../interfaces/lib/coer-menu/menu-option-selected.interface";
+import { IMenuOptionSelected } from "../../interfaces";
 
 export class Menu {
 

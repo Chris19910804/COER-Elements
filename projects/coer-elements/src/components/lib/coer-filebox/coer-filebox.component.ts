@@ -1,5 +1,5 @@
 import { Component, computed, ElementRef, inject, Input, input, output, viewChild } from '@angular/core';
-import { IFile, IFileImage } from '../../../interfaces/coer-filebox';
+import { IFile, IFileImage } from '../../../interfaces';
 import { CoerAlert } from '../../lib/coer-alert/coer-alert.component';
 import { CoerModal } from '../../lib/coer-modal/coer-modal.component';
 import { Files } from '../../../tools/lib/files.class';

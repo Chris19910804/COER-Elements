@@ -1,6 +1,6 @@
 import { inject } from "@angular/core";
 import { Router } from '@angular/router';
-import { IAppSource } from "../../interfaces/lib/app-source.interface";
+import { IAppSource } from "../../interfaces";
 import { Breadcrumbs } from "../lib/breadcrumbs.class";
 import { Tools } from "../lib/tools";
 

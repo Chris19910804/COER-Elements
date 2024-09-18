@@ -1,4 +1,4 @@
-import { IGridCoerSwitch, IGridCoerTextBox, IGridItem } from "../../../interfaces/coer-grid";
+import { IGridCoerSwitch, IGridCoerTextBox, IGridItem } from "../../../interfaces";
 
 export const GridTemplates = {
 
@@ -27,7 +27,7 @@ export const GridTemplates = {
         tooltip: `${item.value ? 'Active' : 'Disabled' }`
     }),
 
-    
+
     /** Template for text property */
     coerTextboxTemplate: (item: IGridItem<any>): IGridCoerTextBox => ({
         isInput: true,

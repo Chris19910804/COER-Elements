@@ -5,7 +5,7 @@ import { Tools } from '../../tools/lib/tools';
 export class NoImagePipe implements PipeTransform {
 
     transform(value: string | File | null | undefined): string {
-        const NO_IMAGE = '../../images/no-image.png';
+        const NO_IMAGE = '../../../images/no-image.png';
 
         if(Tools.IsOnlyWhiteSpace(value) ) {
             return NO_IMAGE;

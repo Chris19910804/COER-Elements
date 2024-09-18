@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IBreadcrumb, IGoBack } from '../../../interfaces/page-title';
+import { IBreadcrumb, IGoBack } from '../../../interfaces';
 import { Menu } from '../../../tools/lib/menu.class';
 //import { navigation } from 'src/app/app-routing.sidenav';
 //import { Source } from 'src/app/modules/home/classes';

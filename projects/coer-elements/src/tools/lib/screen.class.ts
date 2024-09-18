@@ -1,6 +1,6 @@
 
+import { IScreenSize } from "../../interfaces";
 import { Observable } from "rxjs";
-import { IScreenSize } from "../../interfaces/lib/screen-size.interface";
 
 export class Screen {
 

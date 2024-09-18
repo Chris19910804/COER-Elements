@@ -1,4 +1,4 @@
-import { IGridButtonByRow, IGridColumn, IGridDataSource, IGridImport, IGridHeaderButton, IGridHeaderExportButton, IGridKeyupEnter, IGridSearch, IGridInputSwitchChange, IGridInputTextbox, IGridSort, IGridCheckbox, IGridInputCheckbox, IGridHeader } from "../../../interfaces/coer-grid";
+import { IGridButtonByRow, IGridColumn, IGridDataSource, IGridImport, IGridHeaderButton, IGridHeaderExportButton, IGridKeyupEnter, IGridSearch, IGridInputSwitchChange, IGridInputTextbox, IGridSort, IGridCheckbox, IGridInputCheckbox, IGridHeader } from "../../../interfaces";
 import { AfterViewInit, Component, ElementRef, Input, computed, inject, input, output, signal, viewChild, viewChildren } from "@angular/core";
 import { CoerAlert } from "../../lib/coer-alert/coer-alert.component";
 import { CoerCheckbox } from "../../lib/coer-checkbox/coer-checkbox.component";

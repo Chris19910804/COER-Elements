@@ -1,8 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Component, Inject, inject, OnDestroy } from '@angular/core';
-import { IBreadcrumb } from '../../interfaces/lib/page-title/breadcrumb.interface';
-import { IGoBack } from '../../interfaces/lib/page-title/go-back.interface';
-import { IAppSource } from '../../interfaces/lib/app-source.interface';
+import { IAppSource, IBreadcrumb, IGoBack } from '../../interfaces';
 import { CoerAlert } from '../../components/lib/coer-alert/coer-alert.component';
 import { Breadcrumbs } from '../lib/breadcrumbs.class';
 import { Source } from '../lib/source.class';

@@ -1,4 +1,4 @@
-import { IAppSource } from "../../interfaces/lib/app-source.interface";
+import { IAppSource } from "../../interfaces";
 import { Tools } from './tools';
 
 export class Breadcrumbs {

@@ -2,7 +2,8 @@
   "name": "coer-elements",
   "private": true,
   "scripts": {
-    "build:css": "sass --no-source-map projects/coer-elements/src/styles/index.scss ./dist/coer-elements/styles/coer-elements.css",
+    "clean": "rd /s /q dist/public_api.d.ts .cache>nul 2>&1|echo.>nul",
+    "build:css": "sass --no-source-map projects/coer-elements/styles/index.scss ./dist/coer-elements/styles/coer-elements.css",
     "build": "ng build coer-elements & npm run build:css",
     "serve": "ng serve coer-documentation"
   },
