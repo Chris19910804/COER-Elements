@@ -2,9 +2,6 @@
   "name": "coer-elements",
   "private": true,
   "scripts": {
-    "remove_public_api": "del .\\dist\\coer-elements\\public_api.d.ts",
-    "add_public_api": "echo export {}; > .\\dist\\coer-elements\\public_api.d.ts",
-    "clean_public_api": "npm run remove_public_api & npm run add_public_api",
     "build:css": "sass --no-source-map projects/coer-elements/styles/index.scss ./dist/coer-elements/styles/coer-elements.css",
     "build": "ng build coer-elements & npm run build:css",
     "serve": "ng serve coer-documentation"
@@ -21,10 +18,8 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "jquery": "^3.7.1",
     "moment": "^2.30.1",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.13.3",

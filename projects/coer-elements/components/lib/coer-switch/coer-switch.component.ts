@@ -1,6 +1,6 @@
 import { Component, computed, input, Input, OnDestroy, OnInit, output, ViewChild } from '@angular/core';
-import { MatSlideToggle } from '@angular/material/slide-toggle'; 
 import { CONTROL_VALUE, ControlValue, Tools } from 'coer-elements/tools';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { Tooltip } from 'bootstrap';
 
 @Component({

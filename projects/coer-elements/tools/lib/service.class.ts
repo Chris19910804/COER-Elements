@@ -1,6 +1,6 @@
 import { inject } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpRequest } from "@angular/common/http";
-//import { CoerAlert } from "coer-elements/components";
+import { CoerAlert } from "./coer-alert/coer-alert.component";
 import { IHttpRequest, IHttpResponse } from "coer-elements/interfaces";
 import { Tools } from "./tools";
 import { Subscription } from "rxjs";
@@ -8,7 +8,7 @@ import { Subscription } from "rxjs";
 export class Service {
 
     //Injections
-    //protected readonly alert = inject(CoerAlert);
+    protected readonly alert = inject(CoerAlert);
     protected readonly http = inject(HttpClient);
 
     protected httpCode = {

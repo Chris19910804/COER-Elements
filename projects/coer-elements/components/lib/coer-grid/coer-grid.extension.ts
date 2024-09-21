@@ -1,11 +1,10 @@
 import { IGridButtonByRow, IGridColumn, IGridDataSource, IGridImport, IGridHeaderButton, IGridHeaderExportButton, IGridKeyupEnter, IGridSearch, IGridInputSwitchChange, IGridInputTextbox, IGridSort, IGridCheckbox, IGridInputCheckbox, IGridHeader } from "coer-elements/interfaces";
 import { AfterViewInit, Component, ElementRef, Input, computed, inject, input, output, signal, viewChild, viewChildren } from "@angular/core";
-import { CoerAlert } from "../../lib/coer-alert/coer-alert.component";
 import { CoerCheckbox } from "../../lib/coer-checkbox/coer-checkbox.component";
 import { CoerNumberBox } from "../../lib/coer-numberbox/coer-numberbox.component";
 import { CoerSelectbox } from "../../lib/coer-selectbox/coer-selectbox.component";
 import { CoerTextBox } from "../../lib/coer-textbox/coer-textbox.component";
-import { ControlValue, DateTime, Screen, Tools } from 'coer-elements/tools';
+import { CoerAlert, ControlValue, DateTime, Screen, Tools } from 'coer-elements/tools';
 
 @Component({
     selector: 'coer-grid-extension',

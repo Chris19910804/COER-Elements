@@ -1,8 +1,15 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "./tsconfig.paths.json",
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "coer-elements/components": ["projects/coer-elements/components/public-api.ts"],
+      "coer-elements/directives": ["projects/coer-elements/directives/public-api.ts"],
+      "coer-elements/interfaces": ["projects/coer-elements/interfaces/public-api.ts"],
+      "coer-elements/pipes": ["projects/coer-elements/pipes/public-api.ts"],
+      "coer-elements/signals": ["projects/coer-elements/signals/public-api.ts"],
+      "coer-elements/tools": ["projects/coer-elements/tools/public-api.ts"]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,

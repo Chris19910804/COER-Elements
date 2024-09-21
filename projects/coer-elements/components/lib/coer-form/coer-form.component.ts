@@ -1,7 +1,6 @@
 import { Component, inject, input } from '@angular/core';
-import { FormGroup, ValidationErrors } from '@angular/forms';
-import { CoerAlert } from '../../lib/coer-alert/coer-alert.component';
-import { Tools } from 'coer-elements/tools';
+import { FormGroup, ValidationErrors } from '@angular/forms'; 
+import { CoerAlert, Tools } from 'coer-elements/tools';
 
 @Component({
     selector: 'coer-form',

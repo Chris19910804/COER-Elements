@@ -1,6 +1,5 @@
 import { Component, computed, ElementRef, inject, Input, input, OnInit, output, signal, viewChild } from '@angular/core';
-import { CoerAlert } from '../../lib/coer-alert/coer-alert.component';
-import { CONTROL_VALUE, ControlValue, Tools } from 'coer-elements/tools';
+import { CoerAlert, CONTROL_VALUE, ControlValue, Tools } from 'coer-elements/tools';
 
 @Component({
     selector: 'coer-numberbox',

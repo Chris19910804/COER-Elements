@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Component, Inject, inject, OnDestroy } from '@angular/core';
 import { IAppSource, IBreadcrumb, IGoBack } from 'coer-elements/interfaces';
-//import { CoerAlert } from 'coer-elements/components';
+import { CoerAlert } from './coer-alert/coer-alert.component';
 import { Breadcrumbs } from './breadcrumbs.class';
 import { Source } from './source.class';
 import { Tools } from './tools';
@@ -10,7 +10,7 @@ import { Tools } from './tools';
 export class Page implements AfterViewInit, OnDestroy {
 
     //Injection
-    //protected readonly alert = inject(CoerAlert);
+    protected readonly alert = inject(CoerAlert);
     protected readonly router = inject(Router);
     private readonly activatedRoute = inject(ActivatedRoute);
 

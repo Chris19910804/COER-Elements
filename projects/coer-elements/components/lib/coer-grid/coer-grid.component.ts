@@ -4,8 +4,8 @@ import { CoerCheckbox } from '../../lib/coer-checkbox/coer-checkbox.component';
 import { CoerTextBox } from '../../lib/coer-textbox/coer-textbox.component';
 import { CoerNumberBox } from '../../lib/coer-numberbox/coer-numberbox.component';
 import { CoerSelectbox } from '../../lib/coer-selectbox/coer-selectbox.component';
-import { CONTROL_VALUE, Files, Tools } from 'coer-elements/tools';
 import { IGridLength, IGridInputCheckbox } from 'coer-elements/interfaces';
+import { CONTROL_VALUE, Files, Tools } from 'coer-elements/tools';
 
 
 @Component({

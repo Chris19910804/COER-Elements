@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Tools } from '../tools';
 import * as bootstrap from 'bootstrap';
 import Swal from 'sweetalert2'
 
@@ -12,19 +13,19 @@ export class CoerAlert {
     /** */
     public Success(message: string | null = null, title: string | null = null, icon: string | null = null, autohide: number | null = 3000): void {
         //Title
-        if (!title || title == '') title = 'Success';
+        if (Tools.IsOnlyWhiteSpace(title)) title = 'Success';
         const alertSuccessTitle = document.getElementById('alert-success-title')!;
         alertSuccessTitle.textContent = title;
 
         //Icon
-        icon = this.GetIcon(title, icon, 'bi-check-circle fa-beat');
+        icon = this.GetIcon(title!, icon, 'bi-check-circle fa-beat');
         const alertSuccessIcon = document.getElementById('alert-success-icon')!;
         this.SetIcon(alertSuccessIcon, icon);
 
         //Message
-        if (!message) message = '';
+        if (Tools.IsNull(message)) message = '';
         const alertSuccessMessage = document.getElementById('alert-success-message')!;
-        alertSuccessMessage.innerHTML = message;
+        alertSuccessMessage.innerHTML = message!;
 
         //Toast
         const alertSuccess = document.getElementById('alert-success')!;
@@ -38,19 +39,19 @@ export class CoerAlert {
     /** */
     public Error(message: string | null = null, title: string | null = null, icon: string | null = null, autohide: number | null = 3000): void {
         //Title
-        if (!title || title == '') title = 'Error';
+        if (Tools.IsOnlyWhiteSpace(title)) title = 'Error';
         const alertErrorTitle = document.getElementById('alert-error-title')!;
         alertErrorTitle.textContent = title;
 
         //Icon
-        icon = this.GetIcon(title, icon, 'bi-exclamation-octagon fa-beat');
+        icon = this.GetIcon(title!, icon, 'bi-exclamation-octagon fa-beat');
         const alertErrorIcon = document.getElementById('alert-error-icon')!;
         this.SetIcon(alertErrorIcon, icon);
 
         //Message
-        if (!message) message = '';
+        if (Tools.IsNull(message)) message = '';
         const alertErrorBody = document.getElementById('alert-error-message')!;
-        alertErrorBody.innerHTML = message;
+        alertErrorBody.innerHTML = message!;
 
         //Toast
         const alertError = document.getElementById('alert-error')!;
@@ -64,19 +65,19 @@ export class CoerAlert {
     /** */
     public Info(message: string | null = null, title: string | null = null, icon: string | null = null, autohide: number | null = 3000): void {
         //Title
-        if (!title || title == '') title = 'Info';
+        if (Tools.IsOnlyWhiteSpace(title)) title = 'Info';
         const alertInfoTitle = document.getElementById('alert-info-title')!;
         alertInfoTitle.textContent = title;
 
         //Icon
-        icon = this.GetIcon(title, icon, 'bi-info-circle fa-beat');
+        icon = this.GetIcon(title!, icon, 'bi-info-circle fa-beat');
         const alertInfoIcon = document.getElementById('alert-info-icon')!;
         this.SetIcon(alertInfoIcon, icon);
 
         //Message
-        if (!message) message = '';
+        if (Tools.IsNull(message)) message = '';
         const alertInfoBody = document.getElementById('alert-info-message')!;
-        alertInfoBody.innerHTML = message;
+        alertInfoBody.innerHTML = message!;
 
         //Toast
         const alertInfo = document.getElementById('alert-info')!;
@@ -90,19 +91,19 @@ export class CoerAlert {
     /** */
     public Warning(message: string | null = null, title: string | null = null, icon: string | null = null, autohide: number | null = 3000): void {
         //Title
-        if (!title || title == '') title = 'Warning';
+        if (Tools.IsOnlyWhiteSpace(title)) title = 'Warning';
         const alertWarningTitle = document.getElementById('alert-warning-title')!;
         alertWarningTitle.textContent = title;
 
         //Icon
-        icon = this.GetIcon(title, icon, 'bi-exclamation-triangle-fill fa-beat');
+        icon = this.GetIcon(title!, icon, 'bi-exclamation-triangle-fill fa-beat');
         const alertWarningIcon = document.getElementById('alert-warning-icon')!;
         this.SetIcon(alertWarningIcon, icon);
 
         //Message
-        if (!message) message = '';
+        if (Tools.IsNull(message)) message = '';
         const alertWarningBody = document.getElementById('alert-warning-message')!;
-        alertWarningBody.innerHTML = message;
+        alertWarningBody.innerHTML = message!;
 
         //Toast
         const alertWarning = document.getElementById('alert-warning')!;
@@ -135,28 +136,28 @@ export class CoerAlert {
             let iconType: 'warning' | 'error' | 'success' | 'info';
             switch(alertType) {
                 case 'danger': {
-                    if (icon == null) icon = 'bi-exclamation-octagon';
+                    if (Tools.IsNull(icon)) icon = 'bi-exclamation-octagon';
                     iconType = 'error';
                     color = '#dc3545'; //red
                     break;
                 };
 
                 case 'success': {
-                    if (icon == null) icon = 'bi-check-circle';
+                    if (Tools.IsNull(icon)) icon = 'bi-check-circle';
                     iconType = 'info';
                     color = '#198754'; //green
                     break;
                 };
 
                 case 'info': {
-                    if (icon == null) icon = 'bi-info-circle';
+                    if (Tools.IsNull(icon)) icon = 'bi-info-circle';
                     iconType = 'error';
                     color = '#0d6efd'; //blue
                     break
                 };
 
                 default: {
-                    if (icon == null) icon = 'bi-exclamation-triangle-fill';
+                    if (Tools.IsNull(icon)) icon = 'bi-exclamation-triangle-fill';
                     iconType = 'warning';
                     color = '#ffc107'; //yellow
                     break;

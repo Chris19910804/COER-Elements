@@ -14,7 +14,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 
 //Components
-import { CoerAlert } from './coer-alert/coer-alert.component';
 import { CoerButton } from './coer-button/coer-button.component';
 import { CoerCheckbox } from './coer-checkbox/coer-checkbox.component';
 import { CoerFilebox } from './coer-filebox/coer-filebox.component';
@@ -45,7 +44,6 @@ import { CoerTextBox } from './coer-textbox/coer-textbox.component';
         PipesModule
     ],
     declarations: [
-        CoerAlert,
         CoerButton,
         CoerCheckbox,
         CoerFilebox,
@@ -61,7 +59,6 @@ import { CoerTextBox } from './coer-textbox/coer-textbox.component';
         CoerTextBox,
     ],
     exports: [
-        CoerAlert,
         CoerButton,
         CoerCheckbox,
         CoerFilebox,
