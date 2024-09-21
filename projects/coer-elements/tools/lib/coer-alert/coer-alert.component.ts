@@ -6,7 +6,8 @@ import Swal from 'sweetalert2'
 @Component({
     selector: 'coer-alert',
     templateUrl: './coer-alert.component.html',
-    styleUrls: ['./coer-alert.component.scss']
+    styleUrls: ['./coer-alert.component.scss'],
+    standalone: true
 })
 export class CoerAlert {
 

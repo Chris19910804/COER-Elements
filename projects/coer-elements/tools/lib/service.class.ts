@@ -59,7 +59,7 @@ export class Service {
 
                 error: (httpError: HttpErrorResponse) => {
                     this.ReleaseSubscription(this._GET$);
-                    //this.AlertError(httpError, request.alertError);
+                    this.AlertError(httpError, request.alertError);
 
                     Resolve({
                         body: {} as any,
@@ -73,7 +73,7 @@ export class Service {
                     this.ReleaseSubscription(this._GET$);
 
                     if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        ////this.alert.Success(request.alertSuccess);
+                        this.alert.Success(request.alertSuccess);
                     }
                 }
             });
@@ -100,7 +100,7 @@ export class Service {
 
                 error: (httpError: HttpErrorResponse) => {
                     this.ReleaseSubscription(this._POST$);
-                    //this.AlertError(httpError, request.alertError);
+                    this.AlertError(httpError, request.alertError);
 
                     Resolve({
                         body: {} as any,
@@ -114,7 +114,7 @@ export class Service {
                     this.ReleaseSubscription(this._POST$);
 
                     if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        //this.alert.Success(request.alertSuccess);
+                        this.alert.Success(request.alertSuccess);
                     }
                 }
             });
@@ -141,7 +141,7 @@ export class Service {
 
                 error: (httpError: HttpErrorResponse) => {
                     this.ReleaseSubscription(this._PUT$);
-                    //this.AlertError(httpError, request.alertError);
+                    this.AlertError(httpError, request.alertError);
 
                     Resolve({
                         body: {} as any,
@@ -155,7 +155,7 @@ export class Service {
                     this.ReleaseSubscription(this._PUT$);
 
                     if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        //this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+                        this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
                     }
                 }
             });
@@ -182,7 +182,7 @@ export class Service {
 
                 error: (httpError: HttpErrorResponse) => {
                     this.ReleaseSubscription(this._PATCH$);
-                    //this.AlertError(httpError, request.alertError);
+                    this.AlertError(httpError, request.alertError);
 
                     Resolve({
                         body: {} as any,
@@ -196,7 +196,7 @@ export class Service {
                     this.ReleaseSubscription(this._PATCH$);
 
                     if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        //this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+                        this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
                     }
                 }
             });
@@ -223,7 +223,7 @@ export class Service {
 
                 error: (httpError: HttpErrorResponse) => {
                     this.ReleaseSubscription(this._DELETE$);
-                    //this.AlertError(httpError, request.alertError);
+                    this.AlertError(httpError, request.alertError);
 
                     Resolve({
                         body: {} as any,
@@ -236,7 +236,7 @@ export class Service {
                 complete: () => {
                     this.ReleaseSubscription(this._DELETE$);
                     if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        //this.alert.Success(request.alertSuccess, 'Deleted', 'fa-regular fa-trash-can');
+                        this.alert.Success(request.alertSuccess, 'Deleted', 'fa-regular fa-trash-can');
                     }
                 }
             });
@@ -248,53 +248,53 @@ export class Service {
     private AlertError(httpError: HttpErrorResponse, message?: string): void {
         if (httpError.status >= 500) {
             if (Tools.IsNotOnlyWhiteSpace(message)) {
-                //this.alert.Error('', message, 'fa-solid fa-bug', null);
+                this.alert.Error('', message, 'fa-solid fa-bug', null);
             }
         }
 
         else if (httpError.status < 500) {
             switch(httpError.status) {
                 case 400: {
-                    //this.alert.Warning(httpError.error?.message || httpError.error, 'Bad Request', 'fa-regular fa-face-grin-beam-sweat fa-lg');
+                    this.alert.Warning(httpError.error?.message || httpError.error, 'Bad Request', 'fa-regular fa-face-grin-beam-sweat fa-lg');
                     break;
                 }
 
                 case 401: {
-                    //this.alert.Warning(httpError.error?.message || httpError.error, 'Unauthorize', 'fa-regular fa-face-rolling-eyes fa-lg');
+                    this.alert.Warning(httpError.error?.message || httpError.error, 'Unauthorize', 'fa-regular fa-face-rolling-eyes fa-lg');
                     break;
                 }
 
                 case 404: {
-                    //this.alert.Warning(httpError.error?.message || httpError.error, 'Not Found', 'fa-regular fa-face-meh fa-lg');
+                    this.alert.Warning(httpError.error?.message || httpError.error, 'Not Found', 'fa-regular fa-face-meh fa-lg');
                     break;
                 }
 
                 case 405: {
-                    //this.alert.Warning(httpError.error?.message || httpError.error, 'Not Allowed', 'fa-regular fa-face-grimace fa-lg');
+                    this.alert.Warning(httpError.error?.message || httpError.error, 'Not Allowed', 'fa-regular fa-face-grimace fa-lg');
                     break;
                 }
 
                 case 406: {
-                    //this.alert.Warning(httpError.error?.message || httpError.error, 'Not Acceptable', 'fa-regular fa-face-frown-open fa-lg');
+                    this.alert.Warning(httpError.error?.message || httpError.error, 'Not Acceptable', 'fa-regular fa-face-frown-open fa-lg');
                     break;
                 }
 
                 case 409: {
-                    //this.alert.Warning(httpError.error?.message || httpError.error, 'Conflict', 'fa-regular fa-face-dizzy fa-lg');
+                    this.alert.Warning(httpError.error?.message || httpError.error, 'Conflict', 'fa-regular fa-face-dizzy fa-lg');
                     break;
                 }
 
                 case 413: {
-                    //this.alert.Warning(httpError.error?.message || httpError.error, 'Too Large', 'fa-regular fa-face-flushed fa-lg');
+                    this.alert.Warning(httpError.error?.message || httpError.error, 'Too Large', 'fa-regular fa-face-flushed fa-lg');
                     break;
                 }
 
                 default: {
                     if (httpError.status <= 0) {
-                        //this.alert.Warning('Without Connection', 'WEB API DOWN', 'fa-solid fa-plug-circle-xmark fa-lg', null);
+                        this.alert.Warning('Without Connection', 'WEB API DOWN', 'fa-solid fa-plug-circle-xmark fa-lg', null);
                     }
 
-                    else //this.alert.Warning(httpError.error?.message || httpError.error);
+                    else this.alert.Warning(httpError.error?.message || httpError.error);
                     break;
                 }
             }
