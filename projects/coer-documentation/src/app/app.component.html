@@ -1,4 +1,8 @@
-
-
-
-<coer-alert></coer-alert>
+<!-- Main Image -->
+<coer-filebox
+    class="ms-3"
+    type="image"
+    [image]="{ value: mainImage, marginTop: '10px' }"
+    (onSelected)="UploadImages($event, true)"
+    (onDeleteImage)="DeleteImage()"
+></coer-filebox>

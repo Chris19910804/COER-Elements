@@ -4,7 +4,7 @@ import { provideRouter, withHashLocation } from '@angular/router';
 import { routes } from './app.routing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HttpClientModule } from '@angular/common/http';
-import { CoerAlert } from 'coer-elements';
+import { CoerAlert } from 'coer-elements/tools';
 
 export const appConfig: ApplicationConfig = {
     providers: [

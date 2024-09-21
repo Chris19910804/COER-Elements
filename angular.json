@@ -73,10 +73,10 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/coer-documentation/src/favicon.ico",
-              "projects/coer-documentation/src/assets"
+              "projects/coer-documentation/src/assets",
+              { "glob": "**/*", "input": "./projects/coer-elements/images", "output": "/coer-elements/images" }
             ],
             "styles": [
-              "node_modules/animate.css/animate.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
@@ -84,7 +84,6 @@
               "projects/coer-documentation/src/styles.scss"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@fortawesome/fontawesome-free/js/all.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ],

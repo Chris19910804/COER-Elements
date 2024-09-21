@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { ComponentsModule as CoerElements } from 'coer-elements';
+import { ComponentsModule as CoerElements } from 'coer-elements/components';
 
 //Components
+import { CoerAlert } from 'coer-elements/tools';
 import {
-    CoerAlert,
     CoerButton,
     CoerCheckbox,
     CoerFilebox,
@@ -17,10 +17,10 @@ import {
     CoerTab,
     CoerTextarea,
     CoerTextBox
-} from 'coer-elements';
+} from 'coer-elements/components';
 
 @NgModule({
-    imports: [CoerElements],
+    imports: [CoerElements, CoerAlert],
     exports: [
         CoerAlert,
         CoerButton,

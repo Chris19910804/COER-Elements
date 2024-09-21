@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CoerAlert, ComponentsModule } from 'coer-elements';
+import { ComponentsModule } from 'coer-elements/components';
+import { IFile } from 'coer-elements/interfaces';
 
 @Component({
     selector: 'app-root',
@@ -12,13 +13,25 @@ import { CoerAlert, ComponentsModule } from 'coer-elements';
 export class AppComponent {
 
     //Injection
-    protected readonly alert = inject(CoerAlert);
-
+    protected mainImage: string | File | null = null;
     title = 'Documentation';
 
     constructor() {
-        setTimeout((() => {
-            this.alert.Info();
-        }));
+    }
+
+    /** */
+    protected async UploadImages(images: IFile[], isMain: boolean): Promise<void> {
+        if(images.length > 0) {
+            const [image] = images;
+
+            this.mainImage = image.file;
+        }
+    }
+
+
+    /** */
+    protected async DeleteImage(): Promise<void> {
+
+                            this.mainImage = null;
     }
 }
