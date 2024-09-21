@@ -2,7 +2,9 @@
   "name": "coer-elements",
   "private": true,
   "scripts": {
-    "clean": "rd /s /q dist/public_api.d.ts .cache>nul 2>&1|echo.>nul",
+    "remove_public_api": "del .\\dist\\coer-elements\\public_api.d.ts",
+    "add_public_api": "echo export {}; > .\\dist\\coer-elements\\public_api.d.ts",
+    "clean_public_api": "npm run remove_public_api & npm run add_public_api",
     "build:css": "sass --no-source-map projects/coer-elements/styles/index.scss ./dist/coer-elements/styles/coer-elements.css",
     "build": "ng build coer-elements & npm run build:css",
     "serve": "ng serve coer-documentation"

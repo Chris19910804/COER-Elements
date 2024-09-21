@@ -1,0 +1,47 @@
+div.coer-tab {
+    @import "../../../styles/colors.scss";
+
+    mat-tab-group {
+        mat-tab-header.mat-mdc-tab-header {
+            background-color: rgba(245, 245, 245, 0.384) !important;
+            border-bottom: 1px solid whitesmoke !important;
+
+            div.mat-mdc-tab-label-container {
+                div.mat-mdc-tab-list {
+                    div.mat-mdc-tab-labels {
+                        div.mdc-tab.mat-mdc-tab {
+                            padding: 0px !important;
+                            height: 35px !important;
+                        }
+
+                        div.mdc-tab--active.mdc-tab-indicator--active * {
+                            color: $orange !important;
+                            border-color: $orange !important;
+                        }
+                    }
+                }
+            }
+
+            span.tab {
+                padding: 10px 20px !important;
+            }
+        }
+
+        div.mat-mdc-tab-body-wrapper {
+            overflow: visible !important;
+
+            mat-tab-body {
+                overflow: visible !important;
+
+                div.mat-mdc-tab-body-content {
+                    width: auto !important;
+                    overflow: visible !important;
+
+                    div.tab-content {
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

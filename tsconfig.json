@@ -1,10 +1,8 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
+  "extends": "./tsconfig.paths.json",
   "compileOnSave": false,
   "compilerOptions": {
-    "paths": {
-      "coer-elements": ["dist/coer-elements"]
-    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
