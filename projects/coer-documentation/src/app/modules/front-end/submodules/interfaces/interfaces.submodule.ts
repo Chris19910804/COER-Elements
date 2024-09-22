@@ -10,4 +10,4 @@ import { SharedModule } from 'projects/coer-documentation/src/app/shared/shared.
     imports: [SharedModule, InterfacesRoutingModule],
     exports: [SharedModule]
 })
-export class InterfacesModule { }
+export class InterfacesSubmodule { }

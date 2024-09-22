@@ -48,7 +48,7 @@ export class CoerTreeAccordion {
         }
 
         identity += `lv${this.level}${this.item.label}`;
-        if(identity.includes(' ')) identity.replaceAll(' ', '');
+        if(identity.includes(' ')) identity = identity.replaceAll(' ', '');
         return identity.toLowerCase();
     }
 

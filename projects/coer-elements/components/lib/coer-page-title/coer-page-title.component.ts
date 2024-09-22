@@ -19,7 +19,7 @@ export class CoerPageTitle {
     @Input() showInformation: boolean = false;
 
     protected get _icon(): string {
-        const MENU = Menu.Get();
+        const MENU = Menu.GetSelectedOption();
 
         if(MENU) {
             const MENU_SELECTED = MENU.tree.shift();

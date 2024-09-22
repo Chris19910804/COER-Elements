@@ -1,4 +1,4 @@
-import { Component, OnInit, WritableSignal, inject, viewChild, viewChildren } from '@angular/core';
+import { Component, WritableSignal, inject, viewChild, viewChildren } from '@angular/core';
 import { IMenu, IMenuSelected, IMenuOptionSelected, IScreenSize } from 'coer-elements/interfaces';
 import { CoerTreeAccordion } from './coer-tree-accordion/coer-tree-accordion.component';
 import { breakpointSIGNAL, isModalOpenSIGNAL, isMenuOpenSIGNAL, navigationSIGNAL } from 'coer-elements/signals';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     templateUrl: './coer-sidenav.component.html',
     styleUrl: './coer-sidenav.component.scss'
 })
-export class CoerSidenav implements OnInit {
+export class CoerSidenav {
 
     //Injections
     private _router = inject(Router);
@@ -54,11 +54,6 @@ export class CoerSidenav implements OnInit {
     }
 
 
-    ngOnInit() {
-        Tools.Sleep().then(() => this.SetActiveLink(Menu.Get()));
-    }
-
-
     /** */
     protected NavigateTo(selectedOption: IMenuOptionSelected) {
         let url = `${selectedOption.path}`;
@@ -81,10 +76,10 @@ export class CoerSidenav implements OnInit {
 
 
     /** */
-    private SetActiveLink(selectedOption: IMenuOptionSelected | null): void {
+    public SetActiveLink(selectedOption: IMenuOptionSelected | null): void {
         if (selectedOption) {
             selectedOption = Tools.BreakReference(selectedOption);
-            Menu.Set(selectedOption);
+            Menu.SetSelectedOption(selectedOption);
 
             let collection: Element[] = [];
             collection = collection.concat(Array.from(document.querySelectorAll('mat-drawer-container span.icon-container')));
@@ -175,7 +170,7 @@ export class CoerSidenav implements OnInit {
     /** */
     protected SetIdentityClass = (label: String): string => {
         let identity = `lv1${label}`;
-        if(identity.includes(' ')) identity.replaceAll(' ', '');
+        if(identity.includes(' ')) identity = identity.replaceAll(' ', '');
         return identity.toLowerCase();
     }
 
@@ -189,7 +184,7 @@ export class CoerSidenav implements OnInit {
         }
 
         if(identity.endsWith('-')) identity = identity.slice(0, -1);
-        if(identity.includes(' ')) identity.replaceAll(' ', '');
+        if(identity.includes(' ')) identity = identity.replaceAll(' ', '');
         return identity.toLowerCase();
     }
 
@@ -198,40 +193,36 @@ export class CoerSidenav implements OnInit {
     private BackButtonBrowser() {
         const QUERY_SELECTOR = 'coer-menu-option[ng-reflect-path="[path]"] mat-nav-list.coer-menu-option';
 
-        window.addEventListener('popstate', popStateEvent => {
-            if (popStateEvent.state && popStateEvent.target) {
-                let path: string = (popStateEvent.target as any).location.href;
-                if (path.includes('/#/')) path = path.split('/#')[1];
-                if (path.includes('?')) path = path.split('?')[0];
+        Screen.BackButtonBrowser.subscribe(toPath => {
+            if (toPath.includes('/#/')) toPath = toPath.split('/#')[1];
+            if (toPath.includes('?')) toPath = toPath.split('?')[0];
 
-
-                //Validate path
-                for (const module of navigationSIGNAL()) {
-                    if (module.items) for (const subModule of module.items) {
-                        //Level Three
-                        if (subModule.items) {
-                            for(const item of subModule.items) if (item.path === path) {
-                                (document.querySelector(QUERY_SELECTOR.replace('[path]', path)) as any)?.click();
-                                return;
-                            }
-                        }
-
-                        //Level Two
-                        else if (subModule.path === path) {
-                            (document.querySelector(QUERY_SELECTOR.replace('[path]', path)) as any)?.click();
+            //Validate path
+            for (const module of navigationSIGNAL()) {
+                if (module.items) for (const subModule of module.items) {
+                    //Level Three
+                    if (subModule.items) {
+                        for(const item of subModule.items) if (item.path === toPath) {
+                            (document.querySelector(QUERY_SELECTOR.replace('[path]', toPath)) as any)?.click();
                             return;
                         }
                     }
 
-                    //Level One
-                    else if (module.path === path) {
-                        (document.querySelector(QUERY_SELECTOR.replace('[path]', path)) as any)?.click();
+                    //Level Two
+                    else if (subModule.path === toPath) {
+                        (document.querySelector(QUERY_SELECTOR.replace('[path]', toPath)) as any)?.click();
                         return;
                     }
                 }
 
-                Breadcrumbs.Remove(path);
+                //Level One
+                else if (module.path === toPath) {
+                    (document.querySelector(QUERY_SELECTOR.replace('[path]', toPath)) as any)?.click();
+                    return;
+                }
             }
+
+            Breadcrumbs.Remove(toPath);
         });
     }
 }

@@ -5,7 +5,7 @@ export class Menu {
     private static readonly storage = 'COER-System';
 
     /** */
-    public static Set(menu: IMenuOptionSelected): void {
+    public static SetSelectedOption(menu: IMenuOptionSelected): void {
         let storage = sessionStorage.getItem(this.storage) as any;
         if (storage) storage = JSON.parse(storage);
         storage = Object.assign({}, storage, { menu });
@@ -14,7 +14,7 @@ export class Menu {
 
 
     /** */
-    public static Get(): IMenuOptionSelected | null {
+    public static GetSelectedOption(): IMenuOptionSelected | null {
         let storage = sessionStorage.getItem(this.storage) as any;
 
         if (storage) {

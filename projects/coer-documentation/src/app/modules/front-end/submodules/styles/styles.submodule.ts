@@ -1,13 +1,13 @@
 //Modules
 import { NgModule } from '@angular/core';
-import { ToolsRoutingModule } from './tools.routing';
+import { StylesRoutingModule } from './styles.routing';
 import { SharedModule } from 'projects/coer-documentation/src/app/shared/shared.module';
 
 //Pages
 
 @NgModule({
     declarations: [],
-    imports: [SharedModule, ToolsRoutingModule],
+    imports: [SharedModule, StylesRoutingModule],
     exports: [SharedModule]
 })
-export class ToolsModule { }
+export class StylesSubmodule { }

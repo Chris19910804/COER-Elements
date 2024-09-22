@@ -1,13 +1,13 @@
 //Modules
 import { NgModule } from '@angular/core';
-import { DirectivesRoutingModule } from './directives.routing';
+import { PipesRoutingModule } from './pipes.routing';
 import { SharedModule } from 'projects/coer-documentation/src/app/shared/shared.module';
 
 //Pages
 
 @NgModule({
     declarations: [],
-    imports: [SharedModule, DirectivesRoutingModule],
+    imports: [SharedModule, PipesRoutingModule],
     exports: [SharedModule]
 })
-export class DirectivesModule { }
+export class PipesSubmodule { }

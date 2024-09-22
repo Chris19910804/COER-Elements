@@ -80,7 +80,7 @@ export class CoerMenuOption implements AfterContentInit {
         }
 
         identity += `lv${this.level}${this.label}`;
-        if(identity.includes(' ')) identity.replaceAll(' ', '');
+        if(identity.includes(' ')) identity = identity.replaceAll(' ', '');
         return identity.toLowerCase();
     }
 

@@ -1,8 +1,8 @@
 {
   "name": "coer-elements",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "author": "Christian Omar Escamilla Rodríguez",
-  "keywords": ["coer", "tools", "components"],
+  "keywords": ["COER", "Components", "Directives", "Pipes", "Tools"],
   "description": "",
   "license": "MIT",
   "homepage": "https://github.com/Chris19910804/coer-elements",

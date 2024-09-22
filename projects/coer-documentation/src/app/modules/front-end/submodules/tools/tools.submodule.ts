@@ -1,13 +1,13 @@
 //Modules
 import { NgModule } from '@angular/core';
-import { SignalsRoutingModule } from './signals.routing';
+import { ToolsRoutingModule } from './tools.routing';
 import { SharedModule } from 'projects/coer-documentation/src/app/shared/shared.module';
 
 //Pages
 
 @NgModule({
     declarations: [],
-    imports: [SharedModule, SignalsRoutingModule],
+    imports: [SharedModule, ToolsRoutingModule],
     exports: [SharedModule]
 })
-export class SignalsModule { }
+export class ToolsSubmodule { }
