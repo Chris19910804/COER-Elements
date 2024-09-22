@@ -13,10 +13,12 @@ import {
     CoerNumberBox,
     CoerPageTitle,
     CoerSelectbox,
+    CoerSidenav,
     CoerSwitch,
     CoerTab,
     CoerTextarea,
-    CoerTextBox
+    CoerTextBox,
+    CoerToolbar
 } from 'coer-elements/components';
 
 @NgModule({
@@ -32,10 +34,12 @@ import {
         CoerNumberBox,
         CoerPageTitle,
         CoerSelectbox,
+        CoerSidenav,
         CoerSwitch,
         CoerTextarea,
         CoerTab,
         CoerTextBox,
+        CoerToolbar
     ]
 })
 export class ComponentsModule { }

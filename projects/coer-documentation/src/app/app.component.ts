@@ -1,37 +1,30 @@
-import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ComponentsModule } from 'coer-elements/components';
-import { IFile } from 'coer-elements/interfaces';
+import { Component } from '@angular/core';
+import { HomeModule } from './modules/home/home.module';
+import { navigationSIGNAL } from 'coer-elements/signals';
+declare const appSettings: any;
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, ComponentsModule],
+    imports: [HomeModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
 export class AppComponent {
 
-    //Injection
-    protected mainImage: string | File | null = null;
-    title = 'Documentation';
+    protected appName: string = appSettings.info.name;
 
     constructor() {
-    }
-
-    /** */
-    protected async UploadImages(images: IFile[], isMain: boolean): Promise<void> {
-        if(images.length > 0) {
-            const [image] = images;
-
-            this.mainImage = image.file;
-        }
+        this.GetNavigation();
     }
 
 
-    /** */
-    protected async DeleteImage(): Promise<void> {
+    private GetNavigation() {
+        const navigation = [
+            { label: 'Home', icon: 'fa-sharp fa-solid fa-house', path: '/home' },
+            { label: 'Components', icon: 'fa-solid fa-book', path: '/home' }
+        ];
 
-                            this.mainImage = null;
+        navigationSIGNAL.set(navigation);
     }
 }

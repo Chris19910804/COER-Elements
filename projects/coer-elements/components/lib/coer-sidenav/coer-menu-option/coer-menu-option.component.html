@@ -1,0 +1,11 @@
+<mat-nav-list class="coer-menu-option" (click)="ClickMenuOption('')">
+    <mat-list-item>
+        <span [class]="'icon-container ' + identityClass" [ngStyle]="{ 'margin-left': marginLeft }">
+            <i [class]="_icon" [ngStyle]="{ 'visibility': (level == 3) ? 'hidden' : 'visible' }"></i>
+        </span>
+
+        <span [class]="'label-container ' + identityClass">
+            {{ label }}
+        </span>
+    </mat-list-item>
+</mat-nav-list>

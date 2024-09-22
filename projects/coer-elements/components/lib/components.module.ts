@@ -8,10 +8,14 @@ import { PipesModule } from 'coer-elements/pipes';
 //Angular Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatInputModule } from '@angular/material/input';
+import { MatDrawer, MatDrawerContainer, MatDrawerContent, } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 //Components
 import { CoerButton } from './coer-button/coer-button.component';
@@ -19,14 +23,18 @@ import { CoerCheckbox } from './coer-checkbox/coer-checkbox.component';
 import { CoerFilebox } from './coer-filebox/coer-filebox.component';
 import { CoerForm } from './coer-form/coer-form.component';
 import { CoerGrid } from './coer-grid/coer-grid.component';
+import { CoerMenuOption } from './coer-sidenav/coer-menu-option/coer-menu-option.component';
 import { CoerModal } from './coer-modal/coer-modal.component';
 import { CoerNumberBox } from './coer-numberbox/coer-numberbox.component';
 import { CoerPageTitle } from './coer-page-title/coer-page-title.component';
+import { CoerSidenav } from './coer-sidenav/coer-sidenav.component';
 import { CoerSelectbox } from './coer-selectbox/coer-selectbox.component';
 import { CoerSwitch } from './coer-switch/coer-switch.component';
 import { CoerTab } from './coer-tab/coer-tab.component';
 import { CoerTextarea } from './coer-textarea/coer-textarea.component';
 import { CoerTextBox } from './coer-textbox/coer-textbox.component';
+import { CoerToolbar } from './coer-sidenav/coer-toolbar/coer-toolbar.component';
+import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-accordion.component';
 
 @NgModule({
     imports: [
@@ -36,9 +44,15 @@ import { CoerTextBox } from './coer-textbox/coer-textbox.component';
         ReactiveFormsModule,
         MatButtonModule,
         MatCheckboxModule,
-        MatInputModule,
+        MatDrawerContainer,
+        MatDrawerContent,
+        MatDrawer,
+        MatExpansionModule,
         MatFormFieldModule,
+        MatInputModule,
+        MatListModule,
         MatSlideToggleModule,
+        MatToolbarModule,
         MatTabsModule,
         DirectivesModule,
         PipesModule
@@ -49,14 +63,18 @@ import { CoerTextBox } from './coer-textbox/coer-textbox.component';
         CoerFilebox,
         CoerForm,
         CoerGrid,
+        CoerMenuOption,
         CoerModal,
         CoerNumberBox,
         CoerPageTitle,
+        CoerSidenav,
         CoerSelectbox,
         CoerSwitch,
         CoerTab,
         CoerTextarea,
         CoerTextBox,
+        CoerToolbar,
+        CoerTreeAccordion
     ],
     exports: [
         CoerButton,
@@ -67,11 +85,13 @@ import { CoerTextBox } from './coer-textbox/coer-textbox.component';
         CoerModal,
         CoerNumberBox,
         CoerPageTitle,
+        CoerSidenav,
         CoerSelectbox,
         CoerSwitch,
         CoerTab,
         CoerTextarea,
         CoerTextBox,
+        CoerToolbar
     ]
 })
 export class ComponentsModule { }

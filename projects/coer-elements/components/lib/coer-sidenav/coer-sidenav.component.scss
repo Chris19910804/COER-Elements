@@ -1,0 +1,82 @@
+mat-drawer-container {
+    height: calc(100vh - 45px) !important;
+
+    .margin-left-40px {
+        margin-left: 40px !important;
+    }
+
+    mat-drawer {
+        width: auto;
+        min-width: 200px;
+        background-color: var(--black) !important;
+        z-index: 1 !important;
+
+        div.mat-drawer-inner-container::-webkit-scrollbar {
+            width: 1px !important;
+        }
+
+        div.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+            background-color: var(--gray) !important;
+            border-radius: 5px !important;
+        }
+
+        div.mat-drawer-inner-container::-webkit-scrollbar-thumb:hover {
+            background-color: var(--gray) !important;
+        }
+
+        div.mat-drawer-inner-container::-webkit-scrollbar-thumb:active {
+            background-color: var(--white) !important;
+        }
+
+        i {
+            font-size: 16px !important;
+        }
+
+        div.separator {
+            border: 0.5px solid rgba(245, 245, 245, 0.041) !important;
+        }
+    }
+
+    mat-drawer-content {
+        margin-right: 0px !important;
+
+        aside.side-nav {
+            background-color: var(--black) !important;
+            width: 40px !important;
+            position: fixed !important;
+            left: 0px !important;
+            top: 45px !important;
+            bottom: 0px !important;
+            cursor: pointer !important;
+
+            span.icon-container {
+                width: 100% !important;
+                height: 49.6px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 16px !important;
+                border-bottom: 1px solid rgba(245, 245, 245, 0.041) !important;
+                color: var(--white);
+            }
+
+            span.icon-container:hover {
+                background-color: lighten(#252525, 4.0) !important;
+            }
+
+            span.icon-container.active-link {
+                color: var(--orange) !important;
+            }
+        }
+    }
+
+    div.backdrop {
+        position: absolute !important;
+        top: 0px !important;
+        left: 0px !important;
+        right: 0px !important;
+        bottom: 0px !important;
+        background-color: #0000005b !important;
+        z-index: 1500 !important;
+    }
+}

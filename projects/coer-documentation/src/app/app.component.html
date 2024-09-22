@@ -1,8 +1,9 @@
-<!-- Main Image -->
-<coer-filebox
-    class="ms-3"
-    type="image"
-    [image]="{ value: mainImage, marginTop: '10px' }"
-    (onSelected)="UploadImages($event, true)"
-    (onDeleteImage)="DeleteImage()"
-></coer-filebox>
+<coer-toolbar [appName]="appName" (onClick)="sidenav.Toggle()"></coer-toolbar>
+
+<coer-sidenav #sidenav>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</coer-sidenav>
+
+<coer-alert></coer-alert>

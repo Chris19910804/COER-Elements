@@ -1,0 +1,57 @@
+<mat-accordion class="coer-tree-accordion">
+    <mat-expansion-panel #expansionPanel>
+
+        <!-- Header -->
+        <mat-expansion-panel-header (click)="Toggle()"
+            [class]="identityClass"
+            [ngClass]="{
+                'background-orange': (isExpanded && level == 1),
+                'text-orange': IsActive(iconContainer)
+            }">
+            <mat-panel-description>
+                <span #iconContainer
+                    [ngStyle]="{ 'margin-left': marginLeft }"
+                    [class]="identityClass"
+                    [ngClass]="{
+                        'icon-container': true,
+                        'text-orange': IsActive(iconContainer)
+                    }"> <i [class]="_icon"></i> </span>
+
+                <span #labelContainer
+                    [class]="identityClass"
+                    [ngClass]="{
+                        'label-container': true,
+                        'text-orange': IsActive(labelContainer)
+                    }"> {{ item.label }} </span>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+
+        <div *ngFor="let subItem of item.items">
+            <!-- Sub Menu -->
+            <div *ngIf="IsMenu(subItem); else isOption">
+                <coer-tree-accordion
+                    [level]="level + 1"
+                    [item]="subItem"
+                    [tree]="_tree"
+                    (clickMenuOption)="ClickMenuOption($event)"
+                    (clickMenu)="ClickMenu($event)"
+                ></coer-tree-accordion>
+            </div>
+
+            <!-- Option Menu -->
+            <ng-template #isOption>
+                <coer-menu-option
+                    [label]="subItem.label"
+                    [icon]="subItem?.icon"
+                    [path]="subItem?.path"
+                    [level]="level + 1"
+                    [tree]="_tree"
+                    (clickMenuOption)="ClickMenuOption($event)"
+                ></coer-menu-option>
+            </ng-template>
+
+            <div class="separator"></div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

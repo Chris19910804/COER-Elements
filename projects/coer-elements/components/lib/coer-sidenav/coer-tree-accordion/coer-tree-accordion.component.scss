@@ -1,0 +1,71 @@
+mat-accordion.coer-tree-accordion {
+    div, span {
+        font-size: 16px !important;
+        font-family: sans-serif !important;
+        font-weight: bold;
+    }
+
+    mat-expansion-panel {
+        background-color: var(--black) !important;
+        box-shadow: none !important;
+        border-radius: 0px !important;
+
+        div.mat-expansion-panel-body {
+            padding: 0px !important;
+        }
+
+        div.separator {
+            border: 0.5px solid rgba(245, 245, 245, 0.041) !important;
+        }
+
+        span::selection {
+            background-color: transparent !important;
+        }
+
+        mat-expansion-panel-header {
+            padding: 0px 10px;
+            height: 48px !important;
+
+            span.mat-expansion-indicator {
+                width: 10px !important;
+                margin-left: 15px !important;
+            }
+
+            span.mat-expansion-indicator::after {
+                color: var(--white) !important;
+            }
+
+            mat-panel-description {
+                margin-right: 0px !important;
+
+                span.icon-container {
+                    height: 48px !important;
+                    min-width: 20px !important;
+                    max-width: 20px !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    color: var(--white);
+                }
+
+                span.label-container {
+                    height: 48px !important;
+                    margin-left: 10px !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    color: var(--white);
+                }
+            }
+        }
+
+        mat-expansion-panel-header.text-orange {
+            span.mat-expansion-indicator::after {
+                color: var(--orange) !important;
+            }
+        }
+    }
+
+    mat-expansion-panel mat-expansion-panel-header:not(.background-orange):hover {
+        background-color: lighten(#252525, 4.0) !important;
+    }
+}

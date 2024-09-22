@@ -1,0 +1,16 @@
+<div id="coer-tool-bar" [ngClass]="{ 'position-relative': _isModalOpen() }">
+    <mat-toolbar>
+        <coer-button
+            type="icon"
+            icon="menu"
+            [isLoading]="isLoading"
+            (onClick)="ToogleSideNave($event)"
+        ></coer-button>
+
+        <span> {{ appName() }} </span>
+
+        <span class="fill-space"></span>
+    </mat-toolbar>
+
+    <div class="shadow"></div>
+</div>

@@ -1,0 +1,19 @@
+div#coer-tool-bar {
+    z-index: 1;
+
+    mat-toolbar {
+        height: 45px;
+        position: relative;
+        z-index: 10;
+        padding: 0px;
+    }
+
+    div.shadow {
+        box-shadow: 1px -10px 20px black !important;
+        width: 100vw;
+        height: 45px;
+        position: absolute;
+        top: 0;
+        z-index: 8;
+    }
+}

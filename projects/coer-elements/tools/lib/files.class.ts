@@ -81,11 +81,11 @@ export class Files {
         fileName = Tools.CleanUpBlanks(fileName);
 
         if(fileName.endsWith('.xls') || fileName.endsWith('.xlsx') || fileName.endsWith('.csv')) {
-            if (fileName.includes('.xls')) {
+            if (fileName.endsWith('.xls')) {
                 fileName = fileName.replaceAll('.xls', '.xlsx');
             }
 
-            if (fileName.includes('.csv')) {
+            if (fileName.endsWith('.csv')) {
                 fileName = fileName.replaceAll('.csv', '.xlsx');
             }
         }

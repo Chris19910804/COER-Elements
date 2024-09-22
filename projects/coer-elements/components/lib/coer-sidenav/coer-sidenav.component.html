@@ -1,0 +1,48 @@
+<mat-drawer-container [hasBackdrop]="backdrop">
+    <mat-drawer
+        #matSidenav
+        [opened]="isOpen()"
+        (opened)="isOpen.set(true)"
+        (closed)="isOpen.set(false)"
+        [mode]="mode">
+        <div *ngFor="let item of _navigation()">
+            <!-- Menu -->
+            <div *ngIf="IsMenu(item); else OptionMenu">
+                <coer-tree-accordion
+                    [item]="item"
+                    (clickMenuOption)="NavigateTo($event)"
+                    (clickMenu)="MenuSelected($event)"
+                ></coer-tree-accordion>
+            </div>
+
+            <!-- Option Menu -->
+            <ng-template #OptionMenu>
+                <coer-menu-option
+                    [label]="item.label"
+                    [icon]="item?.icon"
+                    [path]="item?.path"
+                    (clickMenuOption)="NavigateTo($event)"
+                ></coer-menu-option>
+            </ng-template>
+
+            <div class="separator"></div>
+        </div>
+
+        <div [ngClass]="{ 'backdrop': _isModalOpen() }"></div>
+    </mat-drawer>
+
+    <!-- Main Screen -->
+    <mat-drawer-content [ngClass]="{ 'margin-left-40px': (!isOpen() && showAsideMenu) }">
+        <aside [ngClass]="{ 'side-nav': true, 'd-none': !showAsideMenu }" (click)="Open($event)">
+            <div *ngFor="let item of _navigation()" (click)="Open($event, item)">
+                <span [class]="'icon-container ' + SetIdentityClass(item.label)">
+                    <i [class]="GetIcon(item)"></i>
+                </span>
+            </div>
+
+            <div [ngClass]="{ 'backdrop': _isModalOpen() }"></div>
+        </aside>
+
+        <ng-content></ng-content>
+    </mat-drawer-content>
+</mat-drawer-container>
