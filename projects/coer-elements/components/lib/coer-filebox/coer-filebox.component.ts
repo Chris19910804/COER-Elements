@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, inject, Input, input, output, viewChild } from '@angular/core'; 
+import { Component, computed, ElementRef, inject, Input, input, output, viewChild } from '@angular/core';
 import { CoerModal } from '../../lib/coer-modal/coer-modal.component';
 import { IFile, IFileImage } from 'coer-elements/interfaces';
 import { CoerAlert, Files, Tools } from 'coer-elements/tools';

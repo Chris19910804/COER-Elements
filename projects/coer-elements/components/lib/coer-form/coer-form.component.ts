@@ -1,5 +1,5 @@
 import { Component, inject, input } from '@angular/core';
-import { FormGroup, ValidationErrors } from '@angular/forms'; 
+import { FormGroup, ValidationErrors } from '@angular/forms';
 import { CoerAlert, Tools } from 'coer-elements/tools';
 
 @Component({

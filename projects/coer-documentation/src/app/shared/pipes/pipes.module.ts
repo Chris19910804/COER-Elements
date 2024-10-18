@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
-import { PipesModule as CoerElements } from 'coer-elements/pipes';
 
 //Pipes
-import {
-    HtmlPipe,
-    NoImagePipe,
-    NumericFormatPipe
-} from 'coer-elements/pipes';
+import * as coerElements from 'coer-elements/pipes';
 
 @NgModule({
-    imports: [CoerElements],
+    imports: [coerElements.PipesModule],
     exports: [
-        HtmlPipe,
-        NoImagePipe,
-        NumericFormatPipe
+        coerElements.HtmlPipe,
+        coerElements.NoImagePipe,
+        coerElements.NumericFormatPipe
     ]
 })
 export class PipesModule { }

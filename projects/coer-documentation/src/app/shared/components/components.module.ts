@@ -1,45 +1,28 @@
 import { NgModule } from '@angular/core';
-import { ComponentsModule as CoerElements } from 'coer-elements/components';
 
 //Components
 import { CoerAlert } from 'coer-elements/tools';
-import {
-    CoerButton,
-    CoerCheckbox,
-    CoerFilebox,
-    CoerForm,
-    CoerGrid,
-    CoerModal,
-    CoerNumberBox,
-    CoerPageTitle,
-    CoerSelectbox,
-    CoerSidenav,
-    CoerSwitch,
-    CoerTab,
-    CoerTextarea,
-    CoerTextBox,
-    CoerToolbar
-} from 'coer-elements/components';
+import * as coerElements from 'coer-elements/components';
 
 @NgModule({
-    imports: [CoerElements, CoerAlert],
+    imports: [coerElements.ComponentsModule, CoerAlert],
     exports: [
         CoerAlert,
-        CoerButton,
-        CoerCheckbox,
-        CoerFilebox,
-        CoerForm,
-        CoerGrid,
-        CoerModal,
-        CoerNumberBox,
-        CoerPageTitle,
-        CoerSelectbox,
-        CoerSidenav,
-        CoerSwitch,
-        CoerTextarea,
-        CoerTab,
-        CoerTextBox,
-        CoerToolbar
+        coerElements.CoerButton,
+        coerElements.CoerCheckbox,
+        coerElements.CoerFilebox,
+        coerElements.CoerForm,
+        coerElements.CoerGrid,
+        coerElements.CoerModal,
+        coerElements.CoerNumberBox,
+        coerElements.CoerPageTitle,
+        coerElements.CoerSelectbox,
+        coerElements.CoerSidenav,
+        coerElements.CoerSwitch,
+        coerElements.CoerTextarea,
+        coerElements.CoerTab,
+        coerElements.CoerTextBox,
+        coerElements.CoerToolbar
     ]
 })
 export class ComponentsModule { }

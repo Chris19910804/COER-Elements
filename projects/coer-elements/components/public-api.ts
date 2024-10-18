@@ -1,4 +1,5 @@
 export * from './lib/components.module';
+export * from './lib/coer-accordion/coer-accordion.component';
 export * from './lib/coer-button/coer-button.component';
 export * from './lib/coer-checkbox/coer-checkbox.component';
 export * from './lib/coer-filebox/coer-filebox.component';

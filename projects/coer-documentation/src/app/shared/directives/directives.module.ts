@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
-import { DirectivesModule as CoerElements } from 'coer-elements/directives';
 
 //Directives
-import { CoerRefDirective, LifeCycleDirective } from 'coer-elements/directives';
+import * as coerElements from 'coer-elements/directives';
 
 @NgModule({
-    imports: [CoerElements],
+    imports: [coerElements.DirectivesModule],
     exports: [
-        CoerRefDirective,
-        LifeCycleDirective
+        coerElements.CoerRefDirective,
+        coerElements.LifeCycleDirective
     ]
 })
 export class DirectivesModule { }

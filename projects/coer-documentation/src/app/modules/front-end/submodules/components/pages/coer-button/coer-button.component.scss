@@ -1,0 +1,19 @@
+div.grid-layout {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 0px;
+    row-gap: 0px;
+}
+
+div.item-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//@media (min-width: 0px) and (max-width: 767px) {
+//    div.grid-layout {
+//        grid-template-columns: 1fr;
+//    }
+//}

@@ -2,7 +2,7 @@ import { Component, computed, ContentChildren, input, Input, OnInit, output, Wri
 import { ICoerRef, IScreenSize } from 'coer-elements/interfaces';
 import { CoerRefDirective } from 'coer-elements/directives';
 import { isModalOpenSIGNAL } from 'coer-elements/signals';
-import { Screen, Tools } from 'coer-elements/tools'; 
+import { Screen, Tools } from 'coer-elements/tools';
 import { Modal } from 'bootstrap';
 
 

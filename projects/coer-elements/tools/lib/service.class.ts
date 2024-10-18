@@ -248,7 +248,7 @@ export class Service {
     private AlertError(httpError: HttpErrorResponse, message?: string): void {
         if (httpError.status >= 500) {
             if (Tools.IsNotOnlyWhiteSpace(message)) {
-                this.alert.Error('', message, 'fa-solid fa-bug', null);
+                this.alert.Error(message, `BUG ${httpError.status}`, 'fa-solid fa-bug', null);
             }
         }
 

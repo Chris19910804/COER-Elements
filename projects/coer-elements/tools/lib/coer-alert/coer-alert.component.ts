@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Tools } from '../tools';
+import { Colors } from '../colors.class';
 import * as bootstrap from 'bootstrap';
 import Swal from 'sweetalert2'
 
@@ -139,28 +140,28 @@ export class CoerAlert {
                 case 'danger': {
                     if (Tools.IsNull(icon)) icon = 'bi-exclamation-octagon';
                     iconType = 'error';
-                    color = '#dc3545'; //red
+                    color = Colors.red;
                     break;
                 };
 
                 case 'success': {
                     if (Tools.IsNull(icon)) icon = 'bi-check-circle';
                     iconType = 'info';
-                    color = '#198754'; //green
+                    color = Colors.green;
                     break;
                 };
 
                 case 'info': {
                     if (Tools.IsNull(icon)) icon = 'bi-info-circle';
                     iconType = 'error';
-                    color = '#0d6efd'; //blue
+                    color = Colors.black;
                     break
                 };
 
                 default: {
                     if (Tools.IsNull(icon)) icon = 'bi-exclamation-triangle-fill';
                     iconType = 'warning';
-                    color = '#ffc107'; //yellow
+                    color = Colors.yellow; 
                     break;
                 }
             }

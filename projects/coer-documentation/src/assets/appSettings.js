@@ -1,6 +1,6 @@
 const appSettings = {
     info: {
-        name: 'COER Documents',
+        name: 'COER Documentation',
     },
     webAPI: {},
     files: {

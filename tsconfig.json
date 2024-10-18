@@ -4,7 +4,7 @@
   "compilerOptions": {
     "paths": {
       "coer-elements/components": ["projects/coer-elements/components/public-api.ts"],
-      "coer-elements/directives": ["projects/coer-elements/directives/public-api.ts"], 
+      "coer-elements/directives": ["projects/coer-elements/directives/public-api.ts"],
       "coer-elements/interfaces": ["projects/coer-elements/interfaces/public-api.ts"],
       "coer-elements/pipes": ["projects/coer-elements/pipes/public-api.ts"],
       "coer-elements/signals": ["projects/coer-elements/signals/public-api.ts"],

@@ -1,5 +1,5 @@
 {
-  "name": "coer-elements",
+  "name": "my-elements",
   "private": true,
   "scripts": {
     "build:css": "sass --no-source-map projects/coer-elements/styles/index.scss ./dist/coer-elements/styles/coer-elements.css",

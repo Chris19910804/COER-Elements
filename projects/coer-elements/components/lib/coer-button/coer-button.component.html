@@ -9,25 +9,25 @@
                 type="button"
                 (click)="Click($event)"
                 [ngClass]="{
-                    'primary-filled': (color() == 'primary' && type() =='filled'),
-                    'secondary-filled': (color() == 'secondary' && type() =='filled'),
-                    'success-filled': (color() == 'success' && type() =='filled'),
-                    'warning-filled': (color() == 'warning' && type() =='filled'),
-                    'danger-filled': (color() == 'danger' && type() =='filled'),
-                    'navigation-filled': (color() == 'navigation' && type() =='filled'),
-                    'primary-outline': (color() == 'primary' && type() =='outline'),
-                    'secondary-outline': (color() == 'secondary' && type() =='outline'),
-                    'success-outline': (color() == 'success' && type() =='outline'),
-                    'warning-outline': (color() == 'warning' && type() =='outline'),
-                    'danger-outline': (color() == 'danger' && type() =='outline'),
-                    'navigation-outline': (color() == 'navigation'),
+                    'primary-filled'    : (color() == 'primary'    && type() =='filled'),
+                    'secondary-filled'  : (color() == 'secondary'  && type() =='filled'),
+                    'success-filled'    : (color() == 'success'    && type() =='filled'),
+                    'warning-filled'    : (color() == 'warning'    && type() =='filled'),
+                    'danger-filled'     : (color() == 'danger'     && type() =='filled'),
+                    'navigation-filled' : (color() == 'navigation' && type() =='filled'),
+                    'primary-outline'   : (color() == 'primary'    && type() =='outline'),
+                    'secondary-outline' : (color() == 'secondary'  && type() =='outline'),
+                    'success-outline'   : (color() == 'success'    && type() =='outline'),
+                    'warning-outline'   : (color() == 'warning'    && type() =='outline'),
+                    'danger-outline'    : (color() == 'danger'     && type() =='outline'),
+                    'navigation-outline': (color() == 'navigation' && type() =='outline'),
                     'readonly': isDisabled(),
                     'cursor-wait': isLoading()
                 }"
                 [ngStyle]="{
-                    'width': width(),
-                    'min-width': minWidth(),
-                    'height': height(),
+                    'width'     : width(),
+                    'min-width' : minWidth(),
+                    'height'    : height(),
                     'min-height': minHeight()
                 }">
                 <span class="slot" *ngIf="!isLoading(); else loading" >
@@ -59,14 +59,14 @@
                     [id]="_id + '-inner-button'"
                     (click)="Click($event)"
                     [ngClass]="{
-                        'primary-filled': (color() == 'primary'),
-                        'secondary-filled': (color() == 'secondary'),
-                        'success-filled': (color() == 'success'),
-                        'warning-filled': (color() == 'warning'),
-                        'danger-filled': (color() == 'danger'),
+                        'primary-filled'   : (color() == 'primary'),
+                        'secondary-filled' : (color() == 'secondary'),
+                        'success-filled'   : (color() == 'success'),
+                        'warning-filled'   : (color() == 'warning'),
+                        'danger-filled'    : (color() == 'danger'),
                         'navigation-filled': (color() == 'navigation'),
-                        'readonly': (isDisabled() || isLoading()),
-                        'cursor-wait': isLoading()
+                        'readonly'         : (isDisabled() || isLoading()),
+                        'cursor-wait'      : isLoading()
                     }">
                     <i [class]="_icon()"></i>
                 </button>
@@ -77,14 +77,14 @@
                     [id]="_id + '-inner-button'"
                     (click)="Click($event)"
                     [ngClass]="{
-                        'primary-outline': (color() == 'primary'),
-                        'secondary-outline': (color() == 'secondary'),
-                        'success-outline': (color() == 'success'),
-                        'warning-outline': (color() == 'warning'),
-                        'danger-outline': (color() == 'danger'),
+                        'primary-outline'   : (color() == 'primary'),
+                        'secondary-outline' : (color() == 'secondary'),
+                        'success-outline'   : (color() == 'success'),
+                        'warning-outline'   : (color() == 'warning'),
+                        'danger-outline'    : (color() == 'danger'),
                         'navigation-outline': (color() == 'navigation'),
-                        'readonly': (isDisabled() || isLoading()),
-                        'cursor-wait': isLoading()
+                        'readonly'          : (isDisabled() || isLoading()),
+                        'cursor-wait'       : isLoading()
                     }">
                     <i [class]="_icon()"></i>
                 </button>
@@ -95,14 +95,14 @@
                     [id]="_id + '-inner-button'"
                     (click)="Click($event)"
                     [ngClass]="{
-                        'primary-outline': (color() == 'primary'),
-                        'secondary-outline': (color() == 'secondary'),
-                        'success-outline': (color() == 'success'),
-                        'warning-outline': (color() == 'warning'),
-                        'danger-outline': (color() == 'danger'),
+                        'primary-outline'   : (color() == 'primary'),
+                        'secondary-outline' : (color() == 'secondary'),
+                        'success-outline'   : (color() == 'success'),
+                        'warning-outline'   : (color() == 'warning'),
+                        'danger-outline'    : (color() == 'danger'),
                         'navigation-outline': (color() == 'navigation'),
-                        'readonly': (isDisabled() || isLoading()),
-                        'icon-no-border': true
+                        'readonly'          : (isDisabled() || isLoading()),
+                        'icon-no-border'    : true
                     }">
                     <i [class]="_icon()"></i>
                 </button>

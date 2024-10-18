@@ -7,7 +7,6 @@ import { SharedModule } from 'projects/coer-documentation/src/app/shared/shared.
 
 @NgModule({
     declarations: [],
-    imports: [SharedModule, SignalsRoutingModule],
-    exports: [SharedModule]
+    imports: [SharedModule, SignalsRoutingModule]
 })
 export class SignalsSubmodule { }

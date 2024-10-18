@@ -1,0 +1,14 @@
+<mat-expansion-panel #coerAccordion class="coer-accordion" [expanded]="expanded()" title="">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            @if(IsNotOnlyWhiteSpace(icon())) {
+                <i [class]="icon()"></i>
+            }
+            <span>{{ title() }}</span>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div>
+        <ng-content></ng-content>
+    </div>
+</mat-expansion-panel>

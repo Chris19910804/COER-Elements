@@ -1,6 +1,66 @@
 <!-- Title -->
 <coer-page-title
-    title="<coer-button>"
+    title="Button"
     [breadcrumbs]="breadcrumbs"
     [goBack]="goBack"
 ></coer-page-title>
+
+<!-- Properties -->
+<section class="coer-container">
+    <coer-accordion title="Properties" class="grid-layout">
+        <div class="grid-layout">
+            <!-- -->
+            <div class="properties">
+                <table class="table table-borderless mb-0">
+                    <tbody>
+                        @for(item of properties; track item.property) {
+                            <tr>
+                                <td>
+                                    @if(HasOptions(item)) {
+                                        <coer-selectbox
+                                            [(ngModel)]="item.default"
+                                            [label]="item.property"
+                                            [dataSource]="item.options!"
+                                        ></coer-selectbox>
+                                    }
+
+                                    @else {
+                                        <coer-textbox
+                                            [(ngModel)]="item.default"
+                                            [label]="item.property"
+                                        ></coer-textbox>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Element -->
+            <div class="element">
+
+                <coer-button #coerButton id="coerButton"
+                    [color]="GetProperty('color')"
+                    [type]="GetProperty('type')"
+                    [icon]="GetProperty('icon')"
+                    [iconPosition]="GetProperty('iconPosition')"
+                    [animation]="GetProperty('animation')"
+                    [isLoading]="GetProperty('isLoading')"
+                    [isDisabled]="GetProperty('isDisabled')"
+                    [isInvisible]="GetProperty('isInvisible')"
+                    [tooltip]="GetProperty('tooltip')"
+                    [tooltipPosition]="GetProperty('tooltipPosition')"
+                    [width]="GetProperty('width')"
+                    [minWidth]="GetProperty('minWidth')"
+                    [height]="GetProperty('height')"
+                    [minHeight]="GetProperty('minHeight')"
+                    [marginTop]="GetProperty('marginTop')"
+                    [marginRight]="GetProperty('marginRight')"
+                    [marginBottom]="GetProperty('marginBottom')"
+                    [marginLeft]="GetProperty('marginLeft')"
+                > Save </coer-button>
+            </div>
+        </div>
+    </coer-accordion>
+</section>

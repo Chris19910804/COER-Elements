@@ -18,6 +18,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 //Components
+import { CoerAccordion } from './coer-accordion/coer-accordion.component';
 import { CoerButton } from './coer-button/coer-button.component';
 import { CoerCheckbox } from './coer-checkbox/coer-checkbox.component';
 import { CoerFilebox } from './coer-filebox/coer-filebox.component';
@@ -58,6 +59,7 @@ import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-
         PipesModule
     ],
     declarations: [
+        CoerAccordion,
         CoerButton,
         CoerCheckbox,
         CoerFilebox,
@@ -77,6 +79,7 @@ import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-
         CoerTreeAccordion
     ],
     exports: [
+        CoerAccordion,
         CoerButton,
         CoerCheckbox,
         CoerFilebox,

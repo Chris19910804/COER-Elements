@@ -18,7 +18,7 @@ export class CoerButton implements OnInit, OnDestroy {
     //Inputs
     @Input() id: string = '';
     public color = input<'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'navigation'>('default');
-    public type = input<'filled' | 'outline' | 'icon'| 'icon-outline' | 'icon-no-border'>('filled');
+    public type = input<'filled' | 'outline' | 'icon' | 'icon-outline' | 'icon-no-border'>('filled');
     public icon = input<'new' | 'save' | 'cancel' | 'import' | 'excel' | 'menu' | 'delete' | 'edit' | 'go' | 'back' | ''>('');
     public iconPosition = input<'left' | 'right'>('left');
     public animation = input<boolean>(false);
@@ -38,8 +38,16 @@ export class CoerButton implements OnInit, OnDestroy {
 
     @Input() set tooltip(value: string) {
         this._tooltip = value;
-        if (value && this._tooltipElement) {
-            this._tooltipElement.setContent({ '.tooltip-inner': this._tooltip });
+
+        if(Tools.IsNotNull(this._tooltipElement)) {
+            if (value) {
+                this._tooltipElement.setContent({ '.tooltip-inner': this._tooltip });
+                Tools.Sleep().then(() => this._tooltipElement.enable());
+            }
+
+            if (Tools.IsOnlyWhiteSpace(value)) {
+                Tools.Sleep().then(() => this._tooltipElement.disable());
+            }
         }
     }
 

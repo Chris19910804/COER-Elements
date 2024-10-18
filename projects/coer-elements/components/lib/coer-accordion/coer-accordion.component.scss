@@ -1,0 +1,23 @@
+mat-expansion-panel.coer-accordion {
+    overflow: visible !important;
+    
+    mat-expansion-panel-header {
+        height: 35px !important;
+        background-color: whitesmoke !important;
+        padding-left: 12px !important;
+
+        span {
+            font-size: 16px !important;
+        }
+
+        mat-panel-title {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    }
+
+    div.mat-expansion-panel-body {
+        padding: 0px !important;
+    }
+}

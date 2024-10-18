@@ -8,12 +8,7 @@
     word-break: break-word;
 }
 
-.invisible {
-    visibility: hidden !important;
-    width: 0px !important;
-    height: 0px !important;
-}
-
 @import "../components/lib/coer-page-title/coer-page-title.component.scss";
 @import "../components/lib/coer-grid/coer-grid.component.scss";
 @import "../components/lib/coer-modal/coer-modal.component.scss";
+@import "../tools/lib/coer-alert/coer-alert.component.scss";
