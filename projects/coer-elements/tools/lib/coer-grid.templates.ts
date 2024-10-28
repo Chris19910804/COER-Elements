@@ -21,6 +21,7 @@ export const GridTemplates = {
         }
     },
 
+
     /** Template for boolean property */
     coerSwitchTemplate: (item: IGridItem<any>): IGridCoerSwitch => ({
         isInput: true,
@@ -32,5 +33,11 @@ export const GridTemplates = {
     coerTextboxTemplate: (item: IGridItem<any>): IGridCoerTextBox => ({
         isInput: true,
         isInvalid: item.value.length <= 0
-    })
+    }),
+
+
+    /** Template for text property */
+    coerIconTemplate: (icon: string, color: string = 'black'): string => {
+        return `<i class='${icon} d-block w-100 text-center' style='color: ${color};'></i>`;
+    }
 }

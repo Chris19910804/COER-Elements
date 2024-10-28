@@ -5,7 +5,6 @@ export * from './lib/coer-checkbox/coer-checkbox.component';
 export * from './lib/coer-filebox/coer-filebox.component';
 export * from './lib/coer-form/coer-form.component';
 export * from './lib/coer-grid/coer-grid.component';
-export * from './lib/coer-grid/coer-grid.templates';
 export * from './lib/coer-modal/coer-modal.component';
 export * from './lib/coer-numberbox/coer-numberbox.component';
 export * from './lib/coer-page-title/coer-page-title.component';

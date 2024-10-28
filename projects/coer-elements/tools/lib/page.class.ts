@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, Component, Inject, inject, OnDestroy } from '@angular/core';
 import { IAppSource, IBreadcrumb, IGoBack } from 'coer-elements/interfaces';
+import { GridTemplates } from './coer-grid.templates';
 import { CoerAlert } from './coer-alert/coer-alert.component';
 import { Breadcrumbs } from './breadcrumbs.class';
 import { Source } from './source.class';
@@ -184,4 +185,11 @@ export class Page implements AfterViewInit, OnDestroy {
         if (Tools.IsNotNull(log)) console.log({ log, value });
         else console.log(value);
     }
+
+
+    //Grid Templates
+    protected isActiveTemplate = GridTemplates.isActiveTemplate;
+    protected coerSwitchTemplate = GridTemplates.coerSwitchTemplate;
+    protected coerTextboxTemplate = GridTemplates.coerTextboxTemplate;
+    protected coerIconTemplate = GridTemplates.coerIconTemplate;
 }

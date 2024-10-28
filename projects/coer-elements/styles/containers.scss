@@ -13,6 +13,8 @@
     animation-duration: 1.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
+    position: relative;
+    z-index: 1;
 }
 
 .coer-container {

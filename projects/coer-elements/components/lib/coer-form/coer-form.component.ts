@@ -49,10 +49,18 @@ export class CoerForm {
 
 
     /** */
-    public GetControlValue(formControlName: string): any {
+    public GetControlValue(formControlName: string, alternative: any = null): any {
         return Tools.IsNotNull(this.formGroup().get(formControlName))
             ? this.formGroup().get(formControlName)!.value
-            : null;
+            : alternative;
+    }
+
+
+    /** */
+    public HasControlValue(formControlName: string): boolean {
+        return Tools.IsNotNull(this.formGroup().get(formControlName))
+            ? Tools.IsNotOnlyWhiteSpace(this.formGroup().get(formControlName)!.value)
+            : false;
     }
 
 

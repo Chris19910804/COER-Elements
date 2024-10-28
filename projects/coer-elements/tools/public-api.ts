@@ -1,5 +1,6 @@
 export * from './lib/coer-alert/coer-alert.component';
 export * from './lib/breadcrumbs.class';
+export * from './lib/coer-grid.templates';
 export * from './lib/colors.class';
 export * from './lib/control-value.class';
 export * from './lib/date-time.class';
