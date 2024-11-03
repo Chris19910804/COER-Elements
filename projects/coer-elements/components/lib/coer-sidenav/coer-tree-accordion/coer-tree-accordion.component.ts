@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { IMenu, IMenuSelected, IMenuOptionSelected } from 'coer-elements/interfaces';
 import { MatExpansionPanel } from '@angular/material/expansion';
+import { Tools } from 'coer-elements/tools';
 
 @Component({
   selector: 'coer-tree-accordion',
@@ -61,7 +62,7 @@ export class CoerTreeAccordion {
 
 
     /** */
-    protected IsMenu = (item: IMenu): boolean => item.hasOwnProperty('items');
+    protected IsMenu = (item: IMenu): boolean => item.hasOwnProperty('items') && Tools.IsNotOnlyWhiteSpace(item.items);
 
 
     /** */

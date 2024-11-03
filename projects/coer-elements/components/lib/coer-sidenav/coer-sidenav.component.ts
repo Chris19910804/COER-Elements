@@ -152,7 +152,7 @@ export class CoerSidenav {
 
 
     /** */
-    protected IsMenu = (item: IMenu): boolean => item.hasOwnProperty('items');
+    protected IsMenu = (item: IMenu): boolean => item.hasOwnProperty('items') && Tools.IsNotOnlyWhiteSpace(item.items);
 
 
     /** */

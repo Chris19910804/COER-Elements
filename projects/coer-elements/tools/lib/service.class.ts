@@ -41,205 +41,389 @@ export class Service {
 
 
     /** HTTP GET */
-    protected HTTP_GET<T>(request: IHttpRequest<T>) {
+    protected HTTP_GET<T>(request: IHttpRequest<T>, cancelPrevious: boolean = true) {
         return new Promise<IHttpResponse<T>>(Resolve => {
-            this.ReleaseSubscription(this._GET$);
-
-            this._GET$ = this.http.request<T>(new HttpRequest("GET", request.url, { params: request.queryParams, headers: request.headers })).subscribe({
-                next: (response: HttpEvent<T> | any) => {
-                    if (response.type > 0) {
+            if(cancelPrevious) {
+                this.ReleaseSubscription(this._GET$);
+    
+                this._GET$ = this.http.request<T>(new HttpRequest("GET", request.url, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: Tools.BreakReference<T>(response.body),
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(this._GET$);
+                        this.AlertError(httpError, request.alertError);
+    
                         Resolve({
-                            body: Tools.BreakReference<T>(response.body),
-                            status: response.status,
-                            message: response.statusText,
-                            ok: true
+                            body: {} as any,
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
                         });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(this._GET$);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess);
+                        }
                     }
-                },
+                });
+            }
 
-                error: (httpError: HttpErrorResponse) => {
-                    this.ReleaseSubscription(this._GET$);
-                    this.AlertError(httpError, request.alertError);
-
-                    Resolve({
-                        body: {} as any,
-                        status: httpError.status,
-                        message: httpError.error?.message || httpError.error,
-                        ok: false
-                    });
-                },
-
-                complete: () => {
-                    this.ReleaseSubscription(this._GET$);
-
-                    if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        this.alert.Success(request.alertSuccess);
+            else {
+                const subscription = this.http.request<T>(new HttpRequest("GET", request.url, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: Tools.BreakReference<T>(response.body),
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(subscription);
+                        this.AlertError(httpError, request.alertError);
+    
+                        Resolve({
+                            body: {} as any,
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
+                        });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(subscription);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess);
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     }
 
 
     /** HTTP POST */
-    protected HTTP_POST<T>(request: IHttpRequest<T>) {
+    protected HTTP_POST<T>(request: IHttpRequest<T>, cancelPrevious: boolean = true) {
         return new Promise<IHttpResponse<T>>(Resolve => {
-            this.ReleaseSubscription(this._POST$);
-
-            this._POST$ = this.http.request<T>(new HttpRequest("POST", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
-                next: (response: HttpEvent<T> | any) => {
-                    if (response.type > 0) {
+            if(cancelPrevious) {
+                this.ReleaseSubscription(this._POST$);
+    
+                this._POST$ = this.http.request<T>(new HttpRequest("POST", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: Tools.BreakReference<T>(response.body),
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(this._POST$);
+                        this.AlertError(httpError, request.alertError);
+    
                         Resolve({
-                            body: Tools.BreakReference<T>(response.body),
-                            status: response.status,
-                            message: response.statusText,
-                            ok: true
+                            body: {} as any,
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
                         });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(this._POST$);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess);
+                        }
                     }
-                },
+                });
+            }
 
-                error: (httpError: HttpErrorResponse) => {
-                    this.ReleaseSubscription(this._POST$);
-                    this.AlertError(httpError, request.alertError);
-
-                    Resolve({
-                        body: {} as any,
-                        status: httpError.status,
-                        message: httpError.error?.message || httpError.error,
-                        ok: false
-                    });
-                },
-
-                complete: () => {
-                    this.ReleaseSubscription(this._POST$);
-
-                    if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        this.alert.Success(request.alertSuccess);
+            else {
+                const subscription = this.http.request<T>(new HttpRequest("POST", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: Tools.BreakReference<T>(response.body),
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(subscription);
+                        this.AlertError(httpError, request.alertError);
+    
+                        Resolve({
+                            body: {} as any,
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
+                        });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(subscription);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess);
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     }
 
 
     /** HTTP PUT */
-    protected HTTP_PUT<T>(request: IHttpRequest<T>) {
+    protected HTTP_PUT<T>(request: IHttpRequest<T>, cancelPrevious: boolean = true) {
         return new Promise<IHttpResponse<void>>(Resolve => {
-            this.ReleaseSubscription(this._PUT$);
-
-            this._PUT$ = this.http.request<T>(new HttpRequest("PUT", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
-                next: (response: HttpEvent<T> | any) => {
-                    if (response.type > 0) {
+            if(cancelPrevious) {
+                this.ReleaseSubscription(this._PUT$);
+    
+                this._PUT$ = this.http.request<T>(new HttpRequest("PUT", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: {} as any,
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(this._PUT$);
+                        this.AlertError(httpError, request.alertError);
+    
                         Resolve({
                             body: {} as any,
-                            status: response.status,
-                            message: response.statusText,
-                            ok: true
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
                         });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(this._PUT$);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+                        }
                     }
-                },
+                });
+            }
 
-                error: (httpError: HttpErrorResponse) => {
-                    this.ReleaseSubscription(this._PUT$);
-                    this.AlertError(httpError, request.alertError);
-
-                    Resolve({
-                        body: {} as any,
-                        status: httpError.status,
-                        message: httpError.error?.message || httpError.error,
-                        ok: false
-                    });
-                },
-
-                complete: () => {
-                    this.ReleaseSubscription(this._PUT$);
-
-                    if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+            else {
+                const subscription = this.http.request<T>(new HttpRequest("PUT", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: {} as any,
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(subscription);
+                        this.AlertError(httpError, request.alertError);
+    
+                        Resolve({
+                            body: {} as any,
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
+                        });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(subscription);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     }
 
 
     /** HTTP PATCH */
-    protected HTTP_PATCH<T>(request: IHttpRequest<T>) {
+    protected HTTP_PATCH<T>(request: IHttpRequest<T>, cancelPrevious: boolean = true) {
         return new Promise<IHttpResponse<void>>(Resolve => {
-            this.ReleaseSubscription(this._PATCH$);
-
-            this._PATCH$ = this.http.request<T>(new HttpRequest("PATCH", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
-                next: (response: HttpEvent<T> | any) => {
-                    if (response.type > 0) {
+            if(cancelPrevious) {
+                this.ReleaseSubscription(this._PATCH$);
+    
+                this._PATCH$ = this.http.request<T>(new HttpRequest("PATCH", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: {} as any,
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(this._PATCH$);
+                        this.AlertError(httpError, request.alertError);
+    
                         Resolve({
                             body: {} as any,
-                            status: response.status,
-                            message: response.statusText,
-                            ok: true
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
                         });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(this._PATCH$);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+                        }
                     }
-                },
+                });
+            }
 
-                error: (httpError: HttpErrorResponse) => {
-                    this.ReleaseSubscription(this._PATCH$);
-                    this.AlertError(httpError, request.alertError);
-
-                    Resolve({
-                        body: {} as any,
-                        status: httpError.status,
-                        message: httpError.error?.message || httpError.error,
-                        ok: false
-                    });
-                },
-
-                complete: () => {
-                    this.ReleaseSubscription(this._PATCH$);
-
-                    if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+            else {
+                const subscription = this.http.request<T>(new HttpRequest("PATCH", request.url, request.body, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: {} as any,
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(subscription);
+                        this.AlertError(httpError, request.alertError);
+    
+                        Resolve({
+                            body: {} as any,
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
+                        });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(subscription);
+    
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess, 'Updated', 'fa-solid fa-arrows-rotate fa-spin');
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     }
 
 
     /** HTTP DELETE */
-    protected HTTP_DELETE<T>(request: IHttpRequest<T>) {
+    protected HTTP_DELETE<T>(request: IHttpRequest<T>, cancelPrevious: boolean = true) {
         return new Promise<IHttpResponse<void>>(Resolve => {
-            this.ReleaseSubscription(this._DELETE$);
-
-            this._DELETE$ = this.http.request<T>(new HttpRequest("DELETE", request.url, { params: request.queryParams, headers: request.headers })).subscribe({
-                next: (response: HttpEvent<T> | any) => {
-                    if (response.type > 0) {
+            if(cancelPrevious) {
+                this.ReleaseSubscription(this._DELETE$);
+    
+                this._DELETE$ = this.http.request<T>(new HttpRequest("DELETE", request.url, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: {} as any,
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(this._DELETE$);
+                        this.AlertError(httpError, request.alertError);
+    
                         Resolve({
                             body: {} as any,
-                            status: response.status,
-                            message: response.statusText,
-                            ok: true
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
                         });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(this._DELETE$);
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess, 'Deleted', 'fa-regular fa-trash-can');
+                        }
                     }
-                },
+                });
+            }
 
-                error: (httpError: HttpErrorResponse) => {
-                    this.ReleaseSubscription(this._DELETE$);
-                    this.AlertError(httpError, request.alertError);
-
-                    Resolve({
-                        body: {} as any,
-                        status: httpError.status,
-                        message: httpError.error?.message || httpError.error,
-                        ok: false
-                    });
-                },
-
-                complete: () => {
-                    this.ReleaseSubscription(this._DELETE$);
-                    if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
-                        this.alert.Success(request.alertSuccess, 'Deleted', 'fa-regular fa-trash-can');
+            else {
+                const subscription = this.http.request<T>(new HttpRequest("DELETE", request.url, { params: request.queryParams, headers: request.headers })).subscribe({
+                    next: (response: HttpEvent<T> | any) => {
+                        if (response.type > 0) {
+                            Resolve({
+                                body: {} as any,
+                                status: response.status,
+                                message: response.statusText,
+                                ok: true
+                            });
+                        }
+                    },
+    
+                    error: (httpError: HttpErrorResponse) => {
+                        this.ReleaseSubscription(subscription);
+                        this.AlertError(httpError, request.alertError);
+    
+                        Resolve({
+                            body: {} as any,
+                            status: httpError.status,
+                            message: httpError.error?.message || httpError.error,
+                            ok: false
+                        });
+                    },
+    
+                    complete: () => {
+                        this.ReleaseSubscription(subscription);
+                        if (Tools.IsNotOnlyWhiteSpace(request.alertSuccess)) {
+                            this.alert.Success(request.alertSuccess, 'Deleted', 'fa-regular fa-trash-can');
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     }
 
