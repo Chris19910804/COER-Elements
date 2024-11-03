@@ -1,26 +1,44 @@
 <div class="coer-list">
   <ul cdkDropList (cdkDropListDropped)="Drop($event)" class="list-group coer-list">
     @for (item of _dataSource(); track GetIndexRow(item)) {
-      <li cdkDrag class="list-group-item coer-list-box">
-        <div *cdkDragPlaceholder class="coer-list-placeholder"></div>
+      <li cdkDrag 
+        class="list-group-item coer-list-box" 
+        cdkDragBoundary="ul.coer-list"
+        (click)="onClick.emit(item)" 
+        (dblclick)="onDoubleClick.emit(item)">
+
+        <div *cdkDragPlaceholder class="coer-list-placeholder cursor-grabbing"></div>
         <div class="coer-list-content"> 
           <span> {{ GetDisplay(item) }} </span> 
           
           @if(true) {
             <div>
-              @if(true) {
+              @if(_showDeleteButton()) {
                 <coer-button
                   type="icon-no-border"
                   color="secondary"
-                  icon="delete"                
-                  [isInvisible]="false"
-                  [isDisabled]="false" 
-                  marginRight="5px"
+                  icon="delete"      
                   (onClick)="onClickDelete.emit(item)"
                 ></coer-button>
               } 
-  
-              <i class="fa-solid fa-grip-vertical text-secondary"></i>
+
+              @if(_showGoButton()) {
+                <coer-button
+                  type="icon-no-border"
+                  color="secondary"
+                  icon="go"   
+                  marginLeft="5px"   
+                  (onClick)="onClickGo.emit(item)"
+                ></coer-button>
+              } 
+               
+              <i cdkDragHandle [ngClass]="{ 
+                'fa-solid fa-grip-vertical text-secondary ps-2': true,
+                'cursor-grab': true, 
+                'cursor-grabbing': false, 
+                'd-none': !_isDraggable()
+                }"
+              ></i>               
             </div>
           }
         </div>  

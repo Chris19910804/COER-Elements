@@ -34,3 +34,8 @@
     @include Container();
     padding-bottom: 5px;
 }
+
+.coer-container-list {
+    @include Container();
+    padding: 0px;
+}

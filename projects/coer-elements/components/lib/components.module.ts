@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from 'coer-elements/directives';
 import { PipesModule } from 'coer-elements/pipes';
-import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragPlaceholder, CdkDragHandle, CdkDropList } from '@angular/cdk/drag-drop';
 
 //Angular Material
 import { MatButtonModule } from '@angular/material/button';
@@ -43,6 +43,7 @@ import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-
     imports: [
         CommonModule,
         CdkDrag, 
+        CdkDragHandle,
         CdkDragPlaceholder,
         CdkDropList, 
         RouterModule,

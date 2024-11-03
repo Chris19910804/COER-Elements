@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, computed, EventEmitter, input, Output } from '@angular/core'; 
+import { AfterViewInit, Component, computed, input, output } from '@angular/core'; 
 import { Tools } from 'coer-elements/tools';
 
 @Component({
@@ -12,11 +12,18 @@ export class CoerList<T> {
     //Inputs
     public dataSource = input<T[]>([]);
     public propDisplay = input<string>('name');
+    public showDeleteButton = input<boolean>(false);
+    public showGoButton = input<boolean>(false);
+    public isLoading = input<boolean>(false);
+    public isDraggable = input<boolean>(false);
 
     //Outputs
-    @Output() onClickDelete = new EventEmitter<T>();
-    @Output() onDrop = new EventEmitter<T[]>(); 
-
+    public onDrop = output<T>(); 
+    public onSort = output<T[]>(); 
+    public onClick = output<T>();
+    public onDoubleClick = output<T>();
+    public onClickDelete = output<T>();
+    public onClickGo = output<T>();
 
     //computed
     protected _dataSource = computed(() => {
@@ -25,7 +32,25 @@ export class CoerList<T> {
             .map((item: any) => Object.assign(item, { index: index++ }));
     });
 
-    
+
+    //computed
+    protected _isDraggable = computed(() => {
+        return this.isDraggable() && !this.isLoading();
+    });
+
+
+    //computed
+    protected _showDeleteButton = computed(() => {
+        return this.showDeleteButton() && !this.isLoading();
+    });
+
+
+    //computed
+    protected _showGoButton = computed(() => {
+        return this.showGoButton() && !this.isLoading();
+    });
+
+
     /** */
     protected GetDisplay = (item: any): string => {
         return Tools.IsNotNull(item) ? item[this.propDisplay()] : '';
@@ -45,6 +70,7 @@ export class CoerList<T> {
         const item = Tools.BreakReference(dataSource[previousIndex]);
         dataSource.splice(previousIndex, 1);
         dataSource.splice(currentIndex, 0, item); 
-        this.onDrop.emit(dataSource);
+        this.onSort.emit(dataSource);
+        this.onDrop.emit(item);
     }
 }

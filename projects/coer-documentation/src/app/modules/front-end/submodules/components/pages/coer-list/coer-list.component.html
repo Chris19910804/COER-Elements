@@ -5,11 +5,14 @@
     [goBack]="goBack"
 ></coer-page-title>
 
-<div class="coer-container">
+<div class="coer-container-list">
 
     <coer-list
         [dataSource]="items"
+        [showDeleteButton]="true"
+        [showGoButton]="true"
+        [isDraggable]="true"
         (onClickDelete)="Delete($event)"
-        (onDrop)="Drop(items = $event)"
+        (onSort)="Drop(items = $event)"
     ></coer-list>
 </div>

@@ -6,7 +6,7 @@ div.coer-list {
         background: white;
         border-radius: 4px;
         overflow: hidden;
-    }
+    } 
       
     li.coer-list-box {
         padding: 10px 10px;
@@ -45,13 +45,19 @@ div.coer-list {
     }
     
     .coer-list.cdk-drop-list-dragging .coer-list-box:not(.cdk-drag-placeholder) {
-        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1); 
-    }
+        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);  
+    }  
     
     div.coer-list-placeholder {
         background: #ccc;
         border: dotted 3px #999;
         min-height: 40px;
-        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1); 
-    }  
+        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);        
+    }   
+    
+    div.cdk-drag-placeholder,
+    ul.cdk-drop-list-dragging,
+    ul.cdk-drop-list-dragging * {
+        cursor: grabbing; 
+    }    
 } 

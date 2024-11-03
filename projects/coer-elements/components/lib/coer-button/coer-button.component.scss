@@ -203,6 +203,11 @@ div.coer-button {
     span {
         font-weight: bold !important;
     }
+
+    .mat-mdc-button-touch-target {
+        width: 0px !important;
+        height: 0px !important;
+    }
 }
 
 div#coer-tool-bar coer-button * {
