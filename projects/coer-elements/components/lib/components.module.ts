@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectivesModule } from 'coer-elements/directives';
 import { PipesModule } from 'coer-elements/pipes';
+import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
 
 //Angular Material
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +25,7 @@ import { CoerCheckbox } from './coer-checkbox/coer-checkbox.component';
 import { CoerFilebox } from './coer-filebox/coer-filebox.component';
 import { CoerForm } from './coer-form/coer-form.component';
 import { CoerGrid } from './coer-grid/coer-grid.component';
+import { CoerList } from './coer-list/coer-list.component';
 import { CoerMenuOption } from './coer-sidenav/coer-menu-option/coer-menu-option.component';
 import { CoerModal } from './coer-modal/coer-modal.component';
 import { CoerNumberBox } from './coer-numberbox/coer-numberbox.component';
@@ -40,6 +42,9 @@ import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-
 @NgModule({
     imports: [
         CommonModule,
+        CdkDrag, 
+        CdkDragPlaceholder,
+        CdkDropList, 
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
@@ -65,6 +70,7 @@ import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-
         CoerFilebox,
         CoerForm,
         CoerGrid,
+        CoerList,
         CoerMenuOption,
         CoerModal,
         CoerNumberBox,
@@ -85,6 +91,7 @@ import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-
         CoerFilebox,
         CoerForm,
         CoerGrid,
+        CoerList,
         CoerModal,
         CoerNumberBox,
         CoerPageTitle,

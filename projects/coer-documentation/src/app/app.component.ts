@@ -36,6 +36,7 @@ export class AppComponent {
             { label: 'Front End', icon: 'fa-solid fa-book', items: [
                 { label: 'Components', items: [
                     { label: 'Button', path: '/front-end/components/coer-button' },
+                    { label: 'List', path: '/front-end/components/coer-list' },
                 ]},
             ]},
         ];

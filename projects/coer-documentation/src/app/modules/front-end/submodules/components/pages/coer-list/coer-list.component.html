@@ -1,0 +1,15 @@
+<!-- Title -->
+<coer-page-title
+    title="List"
+    [breadcrumbs]="breadcrumbs"
+    [goBack]="goBack"
+></coer-page-title>
+
+<div class="coer-container">
+
+    <coer-list
+        [dataSource]="items"
+        (onClickDelete)="Delete($event)"
+        (onDrop)="Drop(items = $event)"
+    ></coer-list>
+</div>

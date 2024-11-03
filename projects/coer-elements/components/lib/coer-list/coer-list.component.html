@@ -1,0 +1,30 @@
+<div class="coer-list">
+  <ul cdkDropList (cdkDropListDropped)="Drop($event)" class="list-group coer-list">
+    @for (item of _dataSource(); track GetIndexRow(item)) {
+      <li cdkDrag class="list-group-item coer-list-box">
+        <div *cdkDragPlaceholder class="coer-list-placeholder"></div>
+        <div class="coer-list-content"> 
+          <span> {{ GetDisplay(item) }} </span> 
+          
+          @if(true) {
+            <div>
+              @if(true) {
+                <coer-button
+                  type="icon-no-border"
+                  color="secondary"
+                  icon="delete"                
+                  [isInvisible]="false"
+                  [isDisabled]="false" 
+                  marginRight="5px"
+                  (onClick)="onClickDelete.emit(item)"
+                ></coer-button>
+              } 
+  
+              <i class="fa-solid fa-grip-vertical text-secondary"></i>
+            </div>
+          }
+        </div>  
+      </li> 
+    } 
+  </ul>
+</div>
