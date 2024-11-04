@@ -33,4 +33,14 @@ export class CoerListPage extends Page {
     protected Drop(ev: any): void {
         console.log(ev)
     }
+
+
+    template (e: any, i: number) {
+        return ``;
+    }
+
+
+    showDeleteButton (e: any, i: number) {
+        return e.name != 'hulk'
+    }
 }

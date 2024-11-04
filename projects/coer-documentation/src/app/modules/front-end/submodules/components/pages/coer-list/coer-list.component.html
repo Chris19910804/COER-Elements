@@ -9,9 +9,10 @@
 
     <coer-list
         [dataSource]="items"
-        [showDeleteButton]="true"
+        [showDeleteButton]="showDeleteButton"
         [showGoButton]="true"
         [isDraggable]="true"
+        [template]="null"
         (onClickDelete)="Delete($event)"
         (onSort)="Drop(items = $event)"
     ></coer-list>

@@ -9,11 +9,17 @@
 
         <div *cdkDragPlaceholder class="coer-list-placeholder cursor-grabbing"></div>
         <div class="coer-list-content"> 
-          <span> {{ GetDisplay(item) }} </span> 
-          
+          @if(_hasTemplate()) {
+            <div [innerHTML]="GetTemplate(item) | html" class="template"></div>
+          }
+
+          @else {
+            <div> {{ GetDisplay(item) }} </div> 
+          }
+           
           @if(true) {
             <div>
-              @if(_showDeleteButton()) {
+              @if(_showDeleteButton(item)) {
                 <coer-button
                   type="icon-no-border"
                   color="secondary"
@@ -22,7 +28,7 @@
                 ></coer-button>
               } 
 
-              @if(_showGoButton()) {
+              @if(_showGoButton(item)) {
                 <coer-button
                   type="icon-no-border"
                   color="secondary"

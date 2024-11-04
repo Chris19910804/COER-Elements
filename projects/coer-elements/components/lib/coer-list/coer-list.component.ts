@@ -12,10 +12,11 @@ export class CoerList<T> {
     //Inputs
     public dataSource = input<T[]>([]);
     public propDisplay = input<string>('name');
-    public showDeleteButton = input<boolean>(false);
-    public showGoButton = input<boolean>(false);
+    public showDeleteButton = input<((item: T, index: number) => boolean) | boolean>(false);
+    public showGoButton = input<((item: T, index: number) => boolean) | boolean>(false);
     public isLoading = input<boolean>(false);
     public isDraggable = input<boolean>(false);
+    public template = input<((item: T, index: number) => string) | null>(null);
 
     //Outputs
     public onDrop = output<T>(); 
@@ -26,7 +27,7 @@ export class CoerList<T> {
     public onClickGo = output<T>();
 
     //computed
-    protected _dataSource = computed(() => {
+    protected _dataSource = computed<T[]>(() => {
         let index = 0;        
         return Tools.BreakReference(this.dataSource())
             .map((item: any) => Object.assign(item, { index: index++ }));
@@ -34,22 +35,15 @@ export class CoerList<T> {
 
 
     //computed
-    protected _isDraggable = computed(() => {
+    protected _isDraggable = computed<boolean>(() => {
         return this.isDraggable() && !this.isLoading();
-    });
+    });  
 
 
     //computed
-    protected _showDeleteButton = computed(() => {
-        return this.showDeleteButton() && !this.isLoading();
+    protected _hasTemplate = computed<boolean>(() => {                
+        return typeof this.template() == 'function';
     });
-
-
-    //computed
-    protected _showGoButton = computed(() => {
-        return this.showGoButton() && !this.isLoading();
-    });
-
 
     /** */
     protected GetDisplay = (item: any): string => {
@@ -60,6 +54,30 @@ export class CoerList<T> {
     /** */
     protected GetIndexRow = (item: any): number => {
         return item['index'];
+    }
+
+
+    /** */
+    protected GetTemplate(item: any): string {  
+        return this.template()!(item, item.index);
+    }
+
+
+    /** */
+    protected _showDeleteButton = (item: any): boolean => { 
+        const showButton = this.showDeleteButton() as any;        
+        return (typeof showButton === 'boolean')
+            ? showButton && !this.isLoading()
+            : showButton(item, item.index) === true && !this.isLoading(); 
+    }
+
+
+    /** */
+    protected _showGoButton = (item: any): boolean => { 
+        const showButton = this.showGoButton() as any;        
+        return (typeof showButton === 'boolean')
+            ? showButton && !this.isLoading()
+            : showButton(item, item.index) === true && !this.isLoading(); 
     }
 
 
