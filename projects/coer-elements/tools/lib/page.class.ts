@@ -50,10 +50,10 @@ export class Page implements AfterViewInit, OnDestroy {
 
     constructor(@Inject(String) page: string) {
         this.SetPageName(page);
-        this.SetSource();
-        this.GetSource();
-        this.GetNavigation();
-        this.SetGoBack();
+        this.__SetSource();
+        this.__GetSource();
+        this.__GetNavigation();
+        this.__SetGoBack();
         this.GetPageResponse();
     }
 
@@ -104,13 +104,13 @@ export class Page implements AfterViewInit, OnDestroy {
 
 
     /** */
-    private SetSource(): void {
+    private __SetSource(): void {
         Source.Set(this._page);
     }
 
 
     /** */
-    private GetSource(): void {
+    private __GetSource(): void {
         this._source = Source.Get();
     }
 
@@ -122,7 +122,7 @@ export class Page implements AfterViewInit, OnDestroy {
 
 
     /** */
-    private GetNavigation(): void {
+    private __GetNavigation(): void {
         if (this._source) {
             this.breadcrumbs = Breadcrumbs.Get().map(item => Object.assign({
                 page: item.page,
@@ -136,7 +136,7 @@ export class Page implements AfterViewInit, OnDestroy {
 
 
     /** */
-    private SetGoBack(): void {
+    private __SetGoBack(): void {
         if (this._source) {
             this.goBack = {
                 show: true,
@@ -192,4 +192,11 @@ export class Page implements AfterViewInit, OnDestroy {
     protected coerSwitchTemplate = GridTemplates.coerSwitchTemplate;
     protected coerTextboxTemplate = GridTemplates.coerTextboxTemplate;
     protected coerIconTemplate = GridTemplates.coerIconTemplate;
+
+
+    //Tools
+    protected IsNull = Tools.IsNull;
+    protected IsNotNull = Tools.IsNotNull;
+    protected IsOnlyWhiteSpace = Tools.IsOnlyWhiteSpace;
+    protected IsNotOnlyWhiteSpace = Tools.IsNotOnlyWhiteSpace;
 }
