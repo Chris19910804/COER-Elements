@@ -52,8 +52,9 @@ export class CoerSelectbox<T> extends ControlValue implements OnInit {
     public isReadonly = input<boolean>(false);
     public isLoading = input<boolean>(false);
 
-    //Outputs
+    //Outputs 
     public onSelected = output<T>();
+    public onUnselect = output<void>();
 
     ngOnInit() {
         this.SetEvents();
@@ -139,6 +140,11 @@ export class CoerSelectbox<T> extends ControlValue implements OnInit {
     /** */
     protected override SetValue(_value: any): void {
         if(_value === undefined) _value = null;
+
+        if(Tools.IsNotOnlyWhiteSpace(this._value) && Tools.IsNull(_value)) {
+            this.onUnselect.emit();
+        }
+
         this._UpdateValue(_value);
         this._value = _value;
         this._search.set(this.GetDisplay(_value));
@@ -315,7 +321,7 @@ export class CoerSelectbox<T> extends ControlValue implements OnInit {
     public Unselect(): void {
         this._search.set('');
         this.SetValue(null);
-        this.Blur();
+        this.Blur(); 
     }
 
 

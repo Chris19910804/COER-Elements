@@ -1,5 +1,5 @@
 <mat-accordion class="coer-tree-accordion">
-    <mat-expansion-panel #expansionPanel>
+    <mat-expansion-panel #expansionPanel [class]="'coer-tree-accordion-' + identityClass">
 
         <!-- Header -->
         <mat-expansion-panel-header (click)="Toggle()"

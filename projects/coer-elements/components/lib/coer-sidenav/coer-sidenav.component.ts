@@ -1,4 +1,4 @@
-import { Component, WritableSignal, inject, viewChild, viewChildren } from '@angular/core';
+import { AfterViewInit, Component, WritableSignal, effect, inject, viewChild, viewChildren } from '@angular/core';
 import { IMenu, IMenuSelected, IMenuOptionSelected, IScreenSize } from 'coer-elements/interfaces';
 import { CoerTreeAccordion } from './coer-tree-accordion/coer-tree-accordion.component';
 import { breakpointSIGNAL, isModalOpenSIGNAL, isMenuOpenSIGNAL, navigationSIGNAL } from 'coer-elements/signals';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     templateUrl: './coer-sidenav.component.html',
     styleUrl: './coer-sidenav.component.scss'
 })
-export class CoerSidenav {
+export class CoerSidenav implements AfterViewInit {
 
     //Injections
     private _router = inject(Router);
@@ -50,6 +50,17 @@ export class CoerSidenav {
                 breakpointSIGNAL.set(breakpoin);
                 if(this.backdrop) this.Close();
             }
+        }); 
+    } 
+
+
+    ngAfterViewInit() {
+        Tools.Sleep(1000).then(_ => {
+            
+           console.log(this.menuList())
+            
+
+             
         });
     }
 

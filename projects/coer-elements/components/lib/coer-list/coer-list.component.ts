@@ -1,6 +1,6 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { AfterViewInit, Component, computed, input, output } from '@angular/core'; 
-import { Tools } from 'coer-elements/tools';
+import { Component, computed, input, output } from '@angular/core'; 
+import { Screen, Tools } from 'coer-elements/tools';
 
 @Component({
     selector: 'coer-list',
@@ -9,14 +9,30 @@ import { Tools } from 'coer-elements/tools';
 })
 export class CoerList<T> { 
 
+    //Variables
+    protected _id: string = Tools.GetGuid('coer-List');
+
     //Inputs
     public dataSource = input<T[]>([]);
     public propDisplay = input<string>('name');
+    public header = input<string>('');
+    public headerIcon = input<string>('');
     public showDeleteButton = input<((item: T, index: number) => boolean) | boolean>(false);
     public showGoButton = input<((item: T, index: number) => boolean) | boolean>(false);
     public isLoading = input<boolean>(false);
     public isDraggable = input<boolean>(false);
+    public showSearch = input<boolean>(false);
     public template = input<((item: T, index: number) => string) | null>(null);
+    public width = input<string>('100%');
+    public MinWidth = input<string>('250px');
+    public MaxWidth = input<string>('100%');
+    public height = input<string>('350px');
+    public minHeight = input<string>('140px');
+    public maxHeight = input<string>('100vh');
+    public marginTop = input<string>('0px');
+    public marginRight = input<string>('0px');
+    public marginBottom = input<string>('0px');
+    public marginLeft = input<string>('0px');
 
     //Outputs
     public onDrop = output<T>(); 
@@ -44,6 +60,32 @@ export class CoerList<T> {
     protected _hasTemplate = computed<boolean>(() => {                
         return typeof this.template() == 'function';
     });
+
+
+    //computed
+    protected _showbuttons = computed<boolean>(() => {                
+        return !this.isLoading();
+    });
+
+
+    //getter
+    protected get _height(): string {
+        let height = this.height();
+
+        if (height == 'full') {
+            const TOOLBAR = 45;
+            const PAGE_HEADER = 70;
+            const LIST_HEADER = document.getElementById(`${this._id}-header`)!;
+            const HEADER = (LIST_HEADER && LIST_HEADER.children.length > 0) ? 50 : 0;
+
+            const MARGIN = 50;
+            const PADDING = 50;
+            height = (Screen.WINDOW_HEIGHT - TOOLBAR - PAGE_HEADER - MARGIN - HEADER - PADDING) + 'px';
+        }
+
+        return height;
+    }
+
 
     /** */
     protected GetDisplay = (item: any): string => {

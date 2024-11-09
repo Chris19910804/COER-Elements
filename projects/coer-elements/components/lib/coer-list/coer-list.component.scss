@@ -1,11 +1,33 @@
 div.coer-list { 
+    header {
+        align-items: center; 
+        justify-content: space-between;
+        padding-right: 0px 8px;
+        margin: 0px;
+
+        h6 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 40px;
+            max-height: 40px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    }
+
+    header > div { 
+        display: flex;
+        align-items: baseline;
+    }
+
     ul.coer-list {
         width: 100%; 
         border: solid 1px #ccc;
         display: block;
         background: white;
         border-radius: 4px;
-        overflow: hidden;
+        overflow: auto;
     } 
       
     li.coer-list-box {
@@ -59,5 +81,28 @@ div.coer-list {
     ul.cdk-drop-list-dragging,
     ul.cdk-drop-list-dragging * {
         cursor: grabbing; 
-    }    
+    }   
+    
+    div.loading,
+    div.no-data {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 25px;
+        color: gray;
+        z-index: 1;
+    }
+
+    div.loading {
+        background-color: #bbbbbb83 !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+
+        span.fa-fade {
+            position: relative !important;
+        }
+    } 
 } 

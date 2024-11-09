@@ -5,6 +5,10 @@
     [goBack]="goBack"
 ></coer-page-title>
 
+<div class="coer-container">
+    <coer-button></coer-button>
+</div>
+
 <div class="coer-container-list">
 
     <coer-list
@@ -13,7 +17,11 @@
         [showGoButton]="true"
         [isDraggable]="true"
         [template]="null"
+        height="full" 
         (onClickDelete)="Delete($event)"
         (onSort)="Drop(items = $event)"
-    ></coer-list>
+        header="ddddddd"
+    >   
+
+</coer-list>
 </div>

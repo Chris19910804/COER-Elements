@@ -102,7 +102,8 @@ import { CoerTreeAccordion } from './coer-sidenav/coer-tree-accordion/coer-tree-
         CoerTab,
         CoerTextarea,
         CoerTextBox,
-        CoerToolbar
+        CoerToolbar,
+        CoerTreeAccordion 
     ]
 })
 export class ComponentsModule { }
