@@ -6,12 +6,14 @@ import { ComponentsModule } from "../../../../../../../coer-elements/components/
 
 //Pages
 import { CoerButtonPage } from './pages/coer-button/coer-button.component';
+import { CoerGridPage } from './pages/coer-grid/coer-grid.component';
 import { CoerListPage } from './pages/coer-list/coer-list.component';
 
 
 @NgModule({
     declarations: [
         CoerButtonPage,
+        CoerGridPage,
         CoerListPage
     ],
     imports: [SharedModule, ComponentsRoutingModule, ComponentsModule]

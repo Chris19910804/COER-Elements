@@ -1,0 +1,25 @@
+<!-- Title -->
+<coer-page-title
+    title="Grid"
+    [breadcrumbs]="breadcrumbs"
+    [goBack]="goBack"
+></coer-page-title>
+
+<div class="coer-container">
+    <coer-button></coer-button>
+</div>
+
+<div class="coer-container-list">
+    <coer-grid #coerGrid
+        [(ngModel)]="items"
+        [columns]="[   
+            { property: 'icon', alias: ' ', width: '50px', template },       
+            { property: 'name', alias: 'Page' },
+            { property: 'module', width: '200px' },
+            { property: 'submodule', width: '200px' },
+            { property: 'isActive', alias: 'Status', width: '100px', textAlign: 'center', template: isActiveTemplate }
+        ]" 
+        [checkbox]="{ show: true }"
+        [search]="{ show: true }" 
+        [isLoading]="isLoading"></coer-grid>
+</div>

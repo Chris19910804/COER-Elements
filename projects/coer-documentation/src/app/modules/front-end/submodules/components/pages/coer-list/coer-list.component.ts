@@ -6,8 +6,7 @@ import { Page } from 'coer-elements/tools';
     templateUrl: './coer-list.component.html',
     styleUrl: './coer-list.component.scss'
 })
-export class CoerListPage extends Page {
-
+export class CoerListPage extends Page { 
      
     constructor() { super('coer-list') }
 

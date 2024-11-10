@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     templateUrl: './coer-sidenav.component.html',
     styleUrl: './coer-sidenav.component.scss'
 })
-export class CoerSidenav implements AfterViewInit {
+export class CoerSidenav {
 
     //Injections
     private _router = inject(Router);
@@ -52,17 +52,6 @@ export class CoerSidenav implements AfterViewInit {
             }
         }); 
     } 
-
-
-    ngAfterViewInit() {
-        Tools.Sleep(1000).then(_ => {
-            
-           console.log(this.menuList())
-            
-
-             
-        });
-    }
 
 
     /** */

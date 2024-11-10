@@ -2,8 +2,7 @@ import { Component, viewChild } from '@angular/core';
 import { HomeModule } from './modules/home/home.module';
 import { navigationSIGNAL } from 'coer-elements/signals';
 import { CoerSidenav } from 'coer-elements/components';
-import { Menu, Tools } from 'coer-elements/tools';
-import { MatExpansionPanel } from '@angular/material/expansion';
+import { Menu, Tools } from 'coer-elements/tools'; 
 declare const appSettings: any;
 
 @Component({
@@ -44,9 +43,5 @@ export class AppComponent {
 
         navigationSIGNAL.set(navigation);
         Tools.Sleep().then(() => this.sidenav().SetActiveLink(Menu.GetSelectedOption()));
-
-
-        Tools.Sleep(3000).then(_=> { 
-        })
     }
 }

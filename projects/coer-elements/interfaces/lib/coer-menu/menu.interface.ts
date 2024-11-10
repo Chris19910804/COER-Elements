@@ -3,6 +3,6 @@ export interface IMenu {
     label: string;
     icon?: string;
     path?: string;
-    secuence?: number;
+    secuence?: number; 
     items?: IMenu[];
 }
