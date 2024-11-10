@@ -1,4 +1,16 @@
 <div class="coer-text-box">
+    @if(_showButtonLeft) {
+        <div class="button-container">
+            <coer-button
+                type="icon-no-border"
+                color="dark"
+                [icon]="_buttonIcon"  
+                [isDisabled]="_buttonIsDisabled" 
+                (onClick)="onClickButton.emit()"
+            ></coer-button>
+        </div>
+    }
+
     <mat-form-field
         [id]="_id + '-container'"
         [floatLabel]="floatLabel()"
@@ -57,4 +69,16 @@
             }
         </span>
     </mat-form-field> 
+
+    @if(_showButtonRight) {
+        <div class="button-container">
+            <coer-button
+                type="icon-no-border"
+                color="dark"
+                [icon]="_buttonIcon"  
+                [isDisabled]="_buttonIsDisabled" 
+                (onClick)="onClickButton.emit()"
+            ></coer-button>
+        </div>
+    }
 </div>

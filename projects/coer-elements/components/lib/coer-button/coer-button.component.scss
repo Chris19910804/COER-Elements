@@ -64,6 +64,11 @@ div.coer-button {
         color: $white !important;
     }
 
+    button.dark-filled {
+        background-color: $black !important;
+        color: $white !important;
+    }
+
     //outline
     button.primary-outline {
         background-color: white !important;
@@ -101,6 +106,12 @@ div.coer-button {
         color: $orange !important;
     }
 
+    button.dark-outline {
+        background-color: white !important;
+        border: 1px solid $black !important;
+        color: $black !important;
+    }
+
     //hover & focus
     button.primary-filled:not(.readonly):hover, button.primary-filled:not(.readonly):focus,
     button.primary-outline:not(.readonly):hover, button.primary-outline:not(.readonly):focus,
@@ -111,7 +122,11 @@ div.coer-button {
     button.warning-filled:not(.readonly):hover, button.warning-filled:not(.readonly):focus,
     button.warning-outline:not(.readonly):hover, button.warning-outline:not(.readonly):focus,
     button.danger-filled:not(.readonly):hover, button.danger-filled:not(.readonly):focus,
-    button.danger-outline:not(.readonly):hover, button.danger-outline:not(.readonly):focus {
+    button.danger-outline:not(.readonly):hover, button.danger-outline:not(.readonly):focus,
+    button.navigation-filled:not(.readonly):hover, button.navigation-filled:not(.readonly):focus,
+    button.navigation-outline:not(.readonly):hover, button.navigation-outline:not(.readonly):focus,
+    button.dark-filled:not(.readonly):hover, button.dark-filled:not(.readonly):focus,
+    button.dark-outline:not(.readonly):hover, button.dark-outline:not(.readonly):focus {
         filter: brightness(1.1) !important;
     }
 
@@ -144,6 +159,11 @@ div.coer-button {
     button.navigation-filled:not(.readonly):focus,
     button.navigation-outline:not(.readonly):focus {
         box-shadow: 0px 0px 20px $orange !important;
+    }
+
+    button.dark-filled:not(.readonly):focus,
+    button.dark-outline:not(.readonly):focus {
+        box-shadow: 0px 0px 20px $black !important;
     }
 
     button.mdc-icon-button.mat-mdc-icon-button {

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoerButtonPage } from './pages/coer-button/coer-button.component';
 import { CoerListPage } from './pages/coer-list/coer-list.component';
 import { CoerGridPage } from './pages/coer-grid/coer-grid.component';
+import { CoerTextboxPage } from './pages/coer-textbox/coer-textbox.component';
 
 export const routes: Routes = [{
     path: '',
@@ -12,6 +13,7 @@ export const routes: Routes = [{
         { path: 'coer-button', component: CoerButtonPage },
         { path: 'coer-grid', component: CoerGridPage },
         { path: 'coer-list', component: CoerListPage },
+        { path: 'coer-textbox', component: CoerTextboxPage },
         { path: '**', redirectTo: '/home' }
     ]
 }];

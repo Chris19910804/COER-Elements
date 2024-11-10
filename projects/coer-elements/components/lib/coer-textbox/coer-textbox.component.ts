@@ -1,4 +1,5 @@
 import { Component, computed, ElementRef, input, Input, OnInit, output, signal, viewChild } from '@angular/core';
+import { IBoxButton } from 'coer-elements/interfaces';
 import { CONTROL_VALUE, ControlValue, Tools } from 'coer-elements/tools';
 
 @Component({
@@ -26,6 +27,7 @@ export class CoerTextBox extends ControlValue implements OnInit {
     }
 
     @Input() id: string = '';
+    @Input() button: IBoxButton = { show: false };
     public label = input<string>('');
     public placeholder = input<string>('');
     public minLength = input<number | string>(0);
@@ -45,12 +47,13 @@ export class CoerTextBox extends ControlValue implements OnInit {
     public isReadonly = input<boolean>(false);
     public isLoading = input<boolean>(false);
     public selectOnFocus = input<boolean>(true);
-    public textPosition = input<'left' | 'center' | 'right'>('left');
+    public textPosition = input<'left' | 'center' | 'right'>('left'); 
 
     //Outputs
     public onKeyupEnter = output<string | number>();
     public onInput = output<string | number>();
     public onClickClear = output<void>();
+    public onClickButton = output<void>();
 
     ngOnInit() {
         this.SetEvents();
@@ -74,6 +77,37 @@ export class CoerTextBox extends ControlValue implements OnInit {
             && this._value != undefined
             && String(this._value).length > 0
     }
+
+
+    //getter
+    protected get _showButtonLeft(): boolean {
+        return this.button.show
+            && Tools.IsNotNull(this.button?.position)     
+            && this.button?.position === 'left';   
+    }
+
+
+    //getter
+    protected get _showButtonRight(): boolean {
+        return  this.button.show
+            && ((Tools.IsNull(this.button?.position) || this.button?.position === 'right'))
+               
+    }
+
+
+    //getter
+    protected get _buttonIcon(): string {
+        return (Tools.IsNotOnlyWhiteSpace(this.button?.icon))
+            ? this.button.icon! : 'pointer';
+    }
+
+
+    //getter
+    protected get _buttonIsDisabled(): boolean {
+        return (Tools.IsNotNull(this.button?.isDisabled))
+            ? this.button.isDisabled! : false;
+    }
+
 
     //getter
     public get value() {

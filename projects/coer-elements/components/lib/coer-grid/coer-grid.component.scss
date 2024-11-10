@@ -59,6 +59,7 @@ div.coer-grid {
         white-space: break-spaces;
         text-overflow: ellipsis;
         overflow: hidden;
+        min-height: 31px !important;
     }
 
     table tbody tr.row-focus td {
@@ -75,18 +76,7 @@ div.coer-grid {
     table tbody tr td.default-cell {
         cursor: pointer !important;
 
-    }
-
-    table tbody tr td.template {
-        display: block !important;
-        white-space: nowrap !important;
-        cursor: pointer !important;
-        height: 31px;
-    }
-
-    table tbody tr td.template > div.template {
-        display: block !important;
-    }
+    } 
 
     table thead tr th.action-button,
     table thead tr td.action-button,
@@ -153,11 +143,18 @@ div.coer-grid {
         position: absolute !important;
     }
 
-    td.check-box i.spinner-border {
-        width: 15px !important;
-        height: 15px !important;
-        color: $orange !important;
-    }
+    td.check-box {
+        div.spinner-border-container {
+            position: absolute;
+            transform: translate(7px, -19px);
+
+            i.spinner-border {
+                width: 15px !important;
+                height: 15px !important;
+                color: $orange !important;
+            }
+        }
+    } 
 
     table thead tr th.check-box > div,
     table tbody tr td.check-box > div {
@@ -193,6 +190,8 @@ div.coer-grid {
         white-space: nowrap !important;
         display: flex !important;
         align-items: center !important;
+        cursor: pointer !important;
         gap: 5px !important;
+        width: 100%;
     }
 }

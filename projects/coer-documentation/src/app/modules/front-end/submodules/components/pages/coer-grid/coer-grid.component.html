@@ -9,11 +9,11 @@
     <coer-button></coer-button>
 </div>
 
-<div class="coer-container-list">
+<div class="coer-container-grid">
     <coer-grid #coerGrid
         [(ngModel)]="items"
         [columns]="[   
-            { property: 'icon', alias: ' ', width: '50px', template },       
+                 { property: 'icon', alias: ' ', width: '50px', template }, 
             { property: 'name', alias: 'Page' },
             { property: 'module', width: '200px' },
             { property: 'submodule', width: '200px' },
@@ -21,5 +21,10 @@
         ]" 
         [checkbox]="{ show: true }"
         [search]="{ show: true }" 
-        [isLoading]="isLoading"></coer-grid>
+        height="full-form"
+        [isLoading]="false"></coer-grid>
 </div>
+
+
+<!--  { property: 'icon', alias: ' ', width: '50px', template },  -->
+<!-- { property: 'isActive', alias: 'Status', width: '100px', textAlign: 'center', template: isActiveTemplate } -->

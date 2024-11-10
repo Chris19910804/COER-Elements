@@ -1,0 +1,17 @@
+<!-- Title -->
+<coer-page-title
+    title="Texbox"
+    [breadcrumbs]="breadcrumbs"
+    [goBack]="goBack"
+></coer-page-title>
+
+<!-- Properties -->
+<section class="coer-container">
+    <coer-textbox
+        [button]="{ show: true, isDisabled: false }"
+        (onClickButton)="GetProperty()"
+    ></coer-textbox>
+</section>
+
+
+<i class="icon-pointer"></i>

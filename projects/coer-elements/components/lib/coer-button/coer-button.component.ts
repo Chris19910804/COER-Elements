@@ -17,9 +17,9 @@ export class CoerButton implements OnInit, OnDestroy {
 
     //Inputs
     @Input() id: string = '';
-    public color = input<'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'navigation'>('default');
+    public color = input<'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'navigation' | 'dark'>('default');
     public type = input<'filled' | 'outline' | 'icon' | 'icon-outline' | 'icon-no-border'>('filled');
-    public icon = input<'new' | 'save' | 'cancel' | 'import' | 'excel' | 'menu' | 'delete' | 'edit' | 'go' | 'back' | ''>('');
+    public icon = input<string>('');
     public iconPosition = input<'left' | 'right'>('left');
     public animation = input<boolean>(false);
     public isLoading = input<boolean>(false);
@@ -74,7 +74,8 @@ export class CoerButton implements OnInit, OnDestroy {
             case 'edit': return 'fa-solid fa-pen fa-lg';
             case 'go': return 'bi bi-box-arrow-right';
             case 'back': return 'bi bi-box-arrow-left';
-            default: return '';
+            case 'pointer': return 'bi bi-hand-index-thumb-fill';
+            default: return this.icon();
         }
     });
 

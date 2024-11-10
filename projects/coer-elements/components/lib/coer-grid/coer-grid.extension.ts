@@ -97,15 +97,16 @@ export class CoerGridExtension<T> extends ControlValue implements AfterViewInit 
     protected get _height(): string {
         let height = this.height();
 
-        if (height == 'full') {
+        if (height == 'full' || height == 'full-form') {
             const TOOLBAR = 45;
             const PAGE_HEADER = 70;
+            const FORM = (height == 'full-form') ? 70 : 0;
             const GRID_HEADER = document.getElementById(`${this._id}-header`)!;
             const HEADER = (GRID_HEADER && GRID_HEADER.children.length > 0) ? 50 : 0;
             const MARGIN = 30;
             const PADDING = 20;
             const FOOTER = this.showFooter() ? 24.5 : 0;
-            height = (Screen.WINDOW_HEIGHT - TOOLBAR - PAGE_HEADER - MARGIN - HEADER - PADDING - FOOTER) + 'px';
+            height = (Screen.WINDOW_HEIGHT - TOOLBAR - PAGE_HEADER - MARGIN - FORM - HEADER - PADDING - FOOTER) + 'px';
         }
 
         return height;

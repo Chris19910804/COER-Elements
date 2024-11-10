@@ -1,6 +1,8 @@
 div.coer-text-box {
     @import "../../../styles/colors.scss";
-
+    display: flex ;
+    align-items: center;
+    
     mat-form-field {
         position: relative !important;
         div.mat-mdc-text-field-wrapper.mdc-text-field {
@@ -100,6 +102,15 @@ div.coer-text-box {
         div.mat-mdc-text-field-wrapper.mdc-text-field {
             background-color: #bbbbbb83 !important;
         }
+    }
+
+    div.button-container {
+        width: 40px !important;
+        height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: lighten($gray, 45%) !important; 
     }
 }
 
