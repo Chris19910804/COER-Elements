@@ -46,7 +46,7 @@ export class CoerMenuOption implements AfterContentInit {
 
     protected get _icon(): string {
         return (this.icon && this.icon.length > 0)
-            ? this.icon : 'bi bi-record-fill';
+            ? this.icon : '';
     }
 
 

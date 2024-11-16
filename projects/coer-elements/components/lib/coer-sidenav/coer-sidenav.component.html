@@ -5,28 +5,47 @@
         (opened)="isOpen.set(true)"
         (closed)="isOpen.set(false)"
         [mode]="mode">
-        <div *ngFor="let item of _navigation()">
-            <!-- Menu -->
-            <div *ngIf="IsMenu(item); else OptionMenu">
-                <coer-tree-accordion
-                    [item]="item"
-                    (clickMenuOption)="NavigateTo($event)"
-                    (clickMenu)="MenuSelected($event)"
-                ></coer-tree-accordion>
-            </div>
 
-            <!-- Option Menu -->
-            <ng-template #OptionMenu>
+        @if(!_isLoading()) {
+            @if(_navigation().length > 0) {
+                <div *ngFor="let item of _navigation()">
+                    <!-- Menu -->
+                    <div *ngIf="IsMenu(item); else OptionMenu">
+                        <coer-tree-accordion
+                            [item]="item"
+                            (clickMenuOption)="NavigateTo($event)"
+                            (clickMenu)="MenuSelected($event)"
+                        ></coer-tree-accordion>
+                    </div>
+        
+                    <!-- Option Menu -->
+                    <ng-template #OptionMenu>
+                        <coer-menu-option
+                            [label]="item.label"
+                            [icon]="item?.icon"
+                            [path]="item?.path"
+                            (clickMenuOption)="NavigateTo($event)"
+                        ></coer-menu-option>
+                    </ng-template>
+        
+                    <div class="separator"></div>
+                </div>
+            }
+
+            @else {
                 <coer-menu-option
-                    [label]="item.label"
-                    [icon]="item?.icon"
-                    [path]="item?.path"
-                    (clickMenuOption)="NavigateTo($event)"
+                    label="Empty"
+                    icon="fa-solid fa-face-meh"
                 ></coer-menu-option>
-            </ng-template>
+            }
+        }
 
-            <div class="separator"></div>
-        </div>
+        @else {
+            <coer-menu-option
+                label="LOADING"
+                icon="fa-solid fa-sync fa-spin"
+            ></coer-menu-option>
+        }
 
         <div [ngClass]="{ 'backdrop': _isModalOpen() }"></div>
     </mat-drawer>

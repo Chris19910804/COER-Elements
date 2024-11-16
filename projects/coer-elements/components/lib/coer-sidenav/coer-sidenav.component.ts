@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, WritableSignal, effect, inject, viewChild, viewChildren } from '@angular/core';
+import { Component, WritableSignal, inject, viewChild, viewChildren } from '@angular/core';
 import { IMenu, IMenuSelected, IMenuOptionSelected, IScreenSize } from 'coer-elements/interfaces';
 import { CoerTreeAccordion } from './coer-tree-accordion/coer-tree-accordion.component';
-import { breakpointSIGNAL, isModalOpenSIGNAL, isMenuOpenSIGNAL, navigationSIGNAL } from 'coer-elements/signals';
+import { breakpointSIGNAL, isModalOpenSIGNAL, isMenuOpenSIGNAL, navigationSIGNAL, isLoadingSIGNAL } from 'coer-elements/signals';
 import { Tools, Breadcrumbs, Menu, Screen } from 'coer-elements/tools';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
@@ -20,6 +20,7 @@ export class CoerSidenav {
     protected isOpen: WritableSignal<boolean> = isMenuOpenSIGNAL;
     protected _isModalOpen: WritableSignal<boolean> = isModalOpenSIGNAL;
     protected _navigation: WritableSignal<IMenu[]> = navigationSIGNAL;
+    protected _isLoading: WritableSignal<boolean> = isLoadingSIGNAL;
 
     //Elements
     protected sidenav = viewChild.required<MatDrawer>('matSidenav');

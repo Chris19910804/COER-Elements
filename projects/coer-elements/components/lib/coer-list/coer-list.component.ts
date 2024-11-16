@@ -1,5 +1,5 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, computed, input, output } from '@angular/core'; 
+import { AfterViewInit, Component, computed, input, output } from '@angular/core'; 
 import { Screen, Tools } from 'coer-elements/tools';
 
 @Component({
@@ -7,10 +7,11 @@ import { Screen, Tools } from 'coer-elements/tools';
     templateUrl: './coer-list.component.html',
     styleUrl: './coer-list.component.scss',
 })
-export class CoerList<T> { 
+export class CoerList<T> implements AfterViewInit { 
 
     //Variables
     protected _id: string = Tools.GetGuid('coer-List');
+    protected _enableAnimations: boolean = false;
 
     //Inputs
     public dataSource = input<T[]>([]);
@@ -19,6 +20,7 @@ export class CoerList<T> {
     public headerIcon = input<string>('');
     public showDeleteButton = input<((item: T, index: number) => boolean) | boolean>(false);
     public showGoButton = input<((item: T, index: number) => boolean) | boolean>(false);
+    public showBackButton = input<boolean>(false);
     public isLoading = input<boolean>(false);
     public isDraggable = input<boolean>(false);
     public showSearch = input<boolean>(false);
@@ -41,6 +43,7 @@ export class CoerList<T> {
     public onDoubleClick = output<T>();
     public onClickDelete = output<T>();
     public onClickGo = output<T>();
+    public onClickBack = output<void>();
 
     //computed
     protected _dataSource = computed<T[]>(() => {
@@ -87,6 +90,13 @@ export class CoerList<T> {
     }
 
 
+    ngAfterViewInit(): void {
+        Tools.Sleep().then(() => {
+            this._enableAnimations = true; 
+        });
+    }
+
+
     /** */
     protected GetDisplay = (item: any): string => {
         return Tools.IsNotNull(item) ? item[this.propDisplay()] : '';
@@ -102,6 +112,13 @@ export class CoerList<T> {
     /** */
     protected GetTemplate(item: any): string {  
         return this.template()!(item, item.index);
+    }
+
+
+    /** */
+    protected _showBackButton = (): boolean => {        
+        return this.showBackButton()
+            && !this.isLoading() 
     }
 
 

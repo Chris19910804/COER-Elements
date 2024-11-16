@@ -17,9 +17,9 @@
     <div class="no-data"> No Data </div>
   }
 
-  <header [id]="_id + '-header'" class="row"> 
+  <header [id]="_id + '-header'" class="row justify-content-end"> 
     @if(header().length > 0 || headerIcon().length > 0) {
-      <div class="col-auto">
+      <div class="col-auto me-auto">
         <h6>
           @if(headerIcon().length > 0) {
             <i [class]="headerIcon()"></i> 
@@ -31,10 +31,23 @@
         </h6>        
       </div>
     }
+
+    @if(_showBackButton()) {
+      <div class="col-auto ps-2 pe-0">         
+        <coer-button
+            type="icon-outline"
+            color="secondary"
+            icon="back"
+            tooltip="Back"
+            [animation]="_enableAnimations"
+            (onClick)="onClickBack.emit()"
+        ></coer-button>       
+      </div>
+    }
     
     <!-- Search -->
     @if(showSearch() && dataSource().length > 0) {
-      <div class="ms-auto col-auto">
+      <div class="col-auto ps-2">
           <coer-textbox
               #inputSearch 
               placeholder="Search"
