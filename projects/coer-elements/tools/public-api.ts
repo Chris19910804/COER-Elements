@@ -5,6 +5,7 @@ export * from './lib/colors.class';
 export * from './lib/control-value.class';
 export * from './lib/date-time.class';
 export * from './lib/files.class';
+export * from './lib/filters.class';
 export * from './lib/menu.class';
 export * from './lib/page.class';
 export * from './lib/screen.class';

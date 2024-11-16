@@ -12,7 +12,16 @@ export class CoerButtonPage extends Page {
 
     protected coerButton = viewChild.required<CoerButton>('#coerButton');
 
-    constructor() { super('coer-button') }
+    constructor() { 
+        super('coer-button');
+
+
+        this.SetPageFilters({ id: 4 });
+
+        setTimeout(() => {
+            console.log(this.GetPageFilters());
+        }, 5000)
+    }
 
     //Variables
     protected properties: IProperty[] = [

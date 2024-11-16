@@ -6,6 +6,7 @@ import { CoerAlert } from './coer-alert/coer-alert.component';
 import { Breadcrumbs } from './breadcrumbs.class';
 import { Source } from './source.class';
 import { Tools } from './tools';
+import { Filters } from './filters.class';
 
 @Component({ template: '' })
 export class Page implements AfterViewInit, OnDestroy {
@@ -43,6 +44,7 @@ export class Page implements AfterViewInit, OnDestroy {
     protected goBack: IGoBack = { show: false };
 
     //Private Variables
+    private _path: string = '';
     private _page: string = '';
     private _source: IAppSource | null = null;
     private _preventDestroy: boolean = false;
@@ -81,25 +83,25 @@ export class Page implements AfterViewInit, OnDestroy {
     protected SetPageName(name: string, id: string | number | null = null): void {
         this._page = name;
 
-        let path = this.router.url;
-        if (path.includes('?')) path = path.split('?')[0];
+        this._path = this.router.url;
+        if (this._path.includes('?')) this._path = this._path.split('?')[0];
 
         if (id) {
-            const PATH_ARRAY = path.split('/');
+            const PATH_ARRAY = this._path.split('/');
             const PATH_ID = Tools.BreakReference(PATH_ARRAY).pop();
             if (PATH_ID) {
                 PATH_ARRAY[PATH_ARRAY.length - 1] = String(id);
-                path = PATH_ARRAY.join('/');
+                this._path = PATH_ARRAY.join('/');
             }
         }
 
         if (this.breadcrumbs.length > 0) {
             this.breadcrumbs[this.breadcrumbs.length - 1].page = name;
-            this.breadcrumbs[this.breadcrumbs.length - 1].path = path;
-            Breadcrumbs.SetLast(name, path);
+            this.breadcrumbs[this.breadcrumbs.length - 1].path = this._path;
+            Breadcrumbs.SetLast(name, this._path);
         }
 
-        this.router.navigateByUrl(path)
+        this.router.navigateByUrl(this._path)
     }
 
 
@@ -177,6 +179,18 @@ export class Page implements AfterViewInit, OnDestroy {
     protected ReloadPage(): void {
         Breadcrumbs.RemoveLast();
         setTimeout(() => window.location.reload());
+    }
+
+
+    /** */
+    protected SetPageFilters<T>(filters: T): void {
+        Filters.Add(filters, this._path);
+    }
+
+
+    /** */
+    protected GetPageFilters<T>(): T | null { 
+        return Filters.Get(this._path); 
     }
 
 
