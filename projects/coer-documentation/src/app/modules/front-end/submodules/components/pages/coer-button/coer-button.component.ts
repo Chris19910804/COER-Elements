@@ -16,11 +16,14 @@ export class CoerButtonPage extends Page {
         super('coer-button');
 
 
-        this.SetPageFilters({ id: 4 });
+        this.SetPageFilters({  id: 9999 })
+
 
         setTimeout(() => {
-            console.log(this.GetPageFilters());
-        }, 5000)
+            
+
+        }, 300)
+        
     }
 
     //Variables

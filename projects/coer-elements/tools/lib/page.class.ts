@@ -41,6 +41,9 @@ export class Page implements AfterViewInit, OnDestroy {
     protected pageResponse: any = null;
 
     /** */
+    protected pageFilters: any = {};
+
+    /** */
     protected goBack: IGoBack = { show: false };
 
     //Private Variables
@@ -56,7 +59,8 @@ export class Page implements AfterViewInit, OnDestroy {
         this.__GetSource();
         this.__GetNavigation();
         this.__SetGoBack();
-        this.GetPageResponse();
+        this.__GetPageFilter();
+        this.__GetPageResponse();
     }
 
     ngAfterViewInit() {
@@ -118,7 +122,7 @@ export class Page implements AfterViewInit, OnDestroy {
 
 
     /** */
-    protected GetPageResponse(): void {
+    private __GetPageResponse(): void {
         this.pageResponse = Source.GetPageResponse();
     }
 
@@ -161,6 +165,7 @@ export class Page implements AfterViewInit, OnDestroy {
         if(this._source) {
             Breadcrumbs.RemoveLast();
             this.SetPageResponse(pageResponse);
+            this.RemovePageFilter();
             Tools.Sleep().then(_ => this.router.navigateByUrl(this._source!.path));
         }
     };
@@ -184,13 +189,21 @@ export class Page implements AfterViewInit, OnDestroy {
 
     /** */
     protected SetPageFilters<T>(filters: T): void {
-        Filters.Add(filters, this._path);
+        this.pageFilters = Tools.BreakReference<T>(filters);
+        Filters.Add(this.pageFilters, this._path);
     }
 
 
     /** */
-    protected GetPageFilters<T>(): T | null { 
-        return Filters.Get(this._path); 
+    private __GetPageFilter(): void { 
+        this.pageFilters = Filters.Get(this._path); 
+    }
+
+
+    /** */
+    protected RemovePageFilter(): void { 
+        this.pageFilters = {};
+        Filters.Remove(this._path); 
     }
 
 

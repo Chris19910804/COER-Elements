@@ -31,9 +31,16 @@ export class Filters {
         let storage = sessionStorage.getItem(this.storage) as any;
         storage = JSON.parse(storage);
 
-        return (Tools.IsNotNull(storage?.filters)) 
-            ? storage.filters.find((x: any[]) => x.some((y: any) => y === path))[1] || null
-            : null;
+        if (Tools.IsNotNull(storage?.filters)) {
+
+            for(const filterList of storage.filters) {                
+                if (filterList.some((x: any) => x === path)) {
+                    return filterList[1];
+                }
+            } 
+        }
+
+        return null; 
     }
 
 
@@ -42,12 +49,16 @@ export class Filters {
         let storage = sessionStorage.getItem(this.storage) as any;
         storage = JSON.parse(storage);
 
-        if (Tools.IsNotNull(storage?.filters)) {
-            const index = storage.filters.findIndex((x: any[]) => x.some((y: any) => y === path));
+        if (Tools.IsNotNull(storage?.filters)) { 
 
-            if (index >= 0) {
-                storage.filters.splice(index, 1); 
+            let index = 0;
+            for(index; index < storage.filters.length; index++) {
+                if (storage.filters[index].some((x: any) => x === path)) {
+                    break;
+                }
             }
+
+            storage.filters.splice(index, 1); 
         }   
 
         sessionStorage.setItem(this.storage, JSON.stringify(storage));

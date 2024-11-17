@@ -11,13 +11,13 @@ export class CoerListPage extends Page {
     constructor() { super('coer-list') }
 
     items: any = [
-        { id: 0, name: 'batman' },
-        { id: 1, name: 'superman' },
-        { id: 2, name: 'spiderman' },
-        { id: 3, name: 'iroman' },
-        { id: 4, name: 'hulk' },
-        { id: 5, name: 'Link' },
-        { id: 6, name: 'Sub-Zero' },
+        //{ id: 0, name: 'batman' },
+        //{ id: 1, name: 'superman' },
+        //{ id: 2, name: 'spiderman' },
+        //{ id: 3, name: 'iroman' },
+        //{ id: 4, name: 'hulk' },
+        //{ id: 5, name: 'Link' },
+        //{ id: 6, name: 'Sub-Zero' },
 
     ]
 

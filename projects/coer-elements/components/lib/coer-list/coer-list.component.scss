@@ -1,8 +1,8 @@
 div.coer-list { 
     header {
         align-items: center; 
-        justify-content: space-between;
-        padding-right: 0px 8px;
+        justify-content: flex-end;
+        padding-right: 10px;
         margin: 0px;
 
         h6 {
@@ -19,6 +19,8 @@ div.coer-list {
     header > div { 
         display: flex;
         align-items: baseline;
+        position: relative;
+        z-index: 1;
     }
 
     ul.coer-list {
