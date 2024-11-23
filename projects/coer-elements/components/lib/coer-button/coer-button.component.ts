@@ -1,4 +1,4 @@
-import { Component, computed, EventEmitter, input, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, computed, input, Input, OnDestroy, OnInit, output, Output } from '@angular/core';
 import { Tools } from 'coer-elements/tools'
 import { Tooltip } from 'bootstrap';
 
@@ -51,8 +51,8 @@ export class CoerButton implements OnInit, OnDestroy {
         }
     }
 
-    //Outputs
-    @Output() onClick = new EventEmitter<MouseEvent>();
+    //Outputs 
+    public onClick = output<MouseEvent>();
 
 
     //computed

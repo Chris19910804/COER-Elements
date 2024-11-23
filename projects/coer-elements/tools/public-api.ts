@@ -9,6 +9,7 @@ export * from './lib/filters.class';
 export * from './lib/menu.class';
 export * from './lib/page.class';
 export * from './lib/screen.class';
+export * from './lib/section.class';
 export * from './lib/service.class';
 export * from './lib/source.class';
 export * from './lib/tools';

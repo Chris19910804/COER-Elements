@@ -7,10 +7,15 @@
 
 <!-- Properties -->
 <section class="coer-container">
-    <coer-textbox
-        [button]="{ show: true, isDisabled: false }"
-        (onClickButton)="GetProperty()"
-    ></coer-textbox>
+    <coer-tab #coerTab minHeight="350px">
+        <!-- Identity Section -->
+        <ng-template coerRef="Identity"> 
+        </ng-template>
+
+        <!-- Roles -->
+        <ng-template coerRef="Roles"> 
+        </ng-template>
+    </coer-tab>
 </section>
 
 

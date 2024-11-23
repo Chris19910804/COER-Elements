@@ -40,5 +40,7 @@ export * from './lib/service/patch.interface';
 
 export * from './lib/app-source.interface';
 export * from './lib/box-button.interface';
+export * from './lib/bulk-load.interface';
 export * from './lib/coer-ref.interface';
+export * from './lib/image.interface';
 export * from './lib/screen-size.interface';

@@ -1,5 +1,5 @@
 import { Component, viewChild } from '@angular/core';
-import { CoerButton } from 'coer-elements/components';
+import { CoerButton, CoerTab } from 'coer-elements/components';
 import { Page, Tools } from 'coer-elements/tools';
 import { IProperty } from 'projects/coer-documentation/src/app/shared/interfaces';
 
@@ -10,9 +10,16 @@ import { IProperty } from 'projects/coer-documentation/src/app/shared/interfaces
 })
 export class CoerTextboxPage extends Page {
 
+    protected coerTab = viewChild.required<CoerTab>('coerTab');
     protected coerButton = viewChild.required<CoerButton>('#coerButton');
 
-    constructor() { super('coer-textbox') }
+    constructor() { super('coer-textbox') 
+
+        setTimeout(() => {
+            this.coerTab().SelectTabBy(x => x.coerRef() == 'Roles');
+
+        },3000)
+    }
 
     //Variables
     protected properties: IProperty[] = [
